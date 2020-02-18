@@ -91,31 +91,31 @@ autoxgboost:
 
 autogluon:
   version: '0.0.5'
-  project: https://github.com/awslabs/autogluon
+  project: anonymous
 
 autogluon_distill:
   version: '0.0.5'
-  project: https://github.com/awslabs/autogluon
+  project: anonymous
 
 autogluon_nostack:
   version: '0.0.5'
-  project: https://github.com/awslabs/autogluon
+  project: anonymous
 
 autogluon_nobag:
   version: '0.0.5'
-  project: https://github.com/awslabs/autogluon
+  project: anonymous
 
 autogluon_norepeatbag:
   version: '0.0.5'
-  project: https://github.com/awslabs/autogluon
+  project: anonymous
 
 autogluon_nonn:
   version: '0.0.5'
-  project: https://github.com/awslabs/autogluon
+  project: anonymous
 
 autogluon_noknn:
   version: '0.0.5'
-  project: https://github.com/awslabs/autogluon
+  project: anonymous
 
 H2OAutoML_benchmark:
   version: '3.28.0.1'
