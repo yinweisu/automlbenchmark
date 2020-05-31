@@ -97,12 +97,13 @@ def run(dataset: Dataset, config: TaskConfig):
         if not aml.leader:
             raise NoResultError("H2O could not produce any model in the requested time.")
 
-        save_predictions(aml, test, dataset=dataset, config=config)
+        predict = save_predictions(aml, test, dataset=dataset, config=config)
         save_artifacts(aml, dataset=dataset, config=config)
 
         return dict(
             models_count=len(aml.leaderboard),
-            training_duration=training.duration
+            training_duration=training.duration,
+            predict_duration=predict.duration
         )
 
     finally:
@@ -172,7 +173,8 @@ def save_model(model_id, dest_dir='.', mformat='mojo'):
 
 
 def save_predictions(model, test, dataset, config, predictions_file=None):
-    h2o_preds = model.predict(test).as_data_frame(use_pandas=False)
+    with Timer() as predict:
+        h2o_preds = model.predict(test).as_data_frame(use_pandas=False)
     preds = to_data_frame(h2o_preds[1:], columns=h2o_preds[0])
     y_pred = preds.iloc[:, 0]
 
@@ -188,3 +190,4 @@ def save_predictions(model, test, dataset, config, predictions_file=None):
                              probabilities=probabilities,
                              predictions=predictions,
                              truth=truth)
+    return predict
