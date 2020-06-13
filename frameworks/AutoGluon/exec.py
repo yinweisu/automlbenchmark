@@ -42,7 +42,11 @@ def run(dataset, config):
 
     column_names, _ = zip(*dataset.columns)
     column_types = dict(dataset.columns)
-    train = pd.DataFrame(dataset.train.data, columns=column_names).astype(column_types, copy=False)
+    train = pd.DataFrame(dataset.train.data, columns=column_names).infer_objects()
+    # print(train2.dtypes)
+    # train = pd.DataFrame(dataset.train.data, columns=column_names).astype(column_types, copy=False)
+    # print(train.dtypes)
+
     label = dataset.target.name
     print(f"Columns dtypes:\n{train.dtypes}")
 
@@ -58,7 +62,8 @@ def run(dataset, config):
             **training_params
         )
 
-    test = pd.DataFrame(dataset.test.data, columns=column_names).astype(column_types, copy=False)
+    # test = pd.DataFrame(dataset.test.data, columns=column_names).astype(column_types, copy=False)
+    test = pd.DataFrame(dataset.test.data, columns=column_names).infer_objects()
     X_test = test.drop(columns=label)
     y_test = test[label]
 
