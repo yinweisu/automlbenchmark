@@ -41,19 +41,43 @@ def run(dataset, config):
     training_params = {k: v for k, v in config.framework_params.items() if not k.startswith('_')}
 
     column_names, _ = zip(*dataset.columns)
-    column_types = dict(dataset.columns)
-    train = pd.DataFrame(dataset.train.data, columns=column_names).infer_objects()
+    # column_types = dict(dataset.columns)
+    # train = pd.DataFrame(dataset.train.data, columns=column_names).infer_objects()
     # print(train2.dtypes)
     # train = pd.DataFrame(dataset.train.data, columns=column_names).astype(column_types, copy=False)
     # print(train.dtypes)
 
+    ####
+    X_train = dataset.train.X
+    y_train = dataset.train.y
+    X_test = dataset.test.X
+    y_test = dataset.test.y
+
+    X_train = task.Dataset(X_train)
+    X_test = task.Dataset(X_test)
+
+    train_path = 'tmp/tmp_file_train.csv'
+    test_path = 'tmp/tmp_file_test.csv'
+
+    save_pd.save(path=train_path, df=X_train)
+    save_pd.save(path=test_path, df=X_test)
+    del X_train
+    del X_test
+
+    # Save and load data to remove any pre-set dtypes, we want to observe performance from worst-case scenario: raw csv
+
     label = dataset.target.name
-    print(f"Columns dtypes:\n{train.dtypes}")
+
+    X_train = task.Dataset(file_path=train_path)
+    X_train[label] = y_train
+    ####
+
+    print(f"Columns dtypes:\n{X_train.dtypes}")
 
     output_dir = make_subdir("models", config)
     with Timer() as training:
         predictor = task.fit(
-            train_data=train,
+            train_data=X_train,
             label=label,
             problem_type=dataset.problem_type,
             output_directory=output_dir,
@@ -62,11 +86,14 @@ def run(dataset, config):
             **training_params
         )
 
-    # test = pd.DataFrame(dataset.test.data, columns=column_names).astype(column_types, copy=False)
-    test = pd.DataFrame(dataset.test.data, columns=column_names).infer_objects()
-    X_test = test.drop(columns=label)
-    y_test = test[label]
 
+
+    # test = pd.DataFrame(dataset.test.data, columns=column_names).astype(column_types, copy=False)
+    # test = pd.DataFrame(dataset.test.data, columns=column_names).infer_objects()
+    # X_test = test.drop(columns=label)
+    # y_test = test[label]
+
+    X_test = task.Dataset(file_path=test_path)
     with Timer() as predict:
         predictions = predictor.predict(X_test)
 
