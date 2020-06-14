@@ -13,6 +13,6 @@ cat $HERE/requirements.txt | sed '/^$/d' | while read -r i; do PIP install "$i";
 
 git clone https://github.com/awslabs/autogluon.git
 
-pip install -e autogluon
+PIP install -e autogluon
 
 #PIP install --no-cache-dir -r $HERE/requirements.txt
