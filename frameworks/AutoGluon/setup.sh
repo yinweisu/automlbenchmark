@@ -10,4 +10,9 @@ if [[ -x "$(command -v brew)" ]]; then
 fi
 
 cat $HERE/requirements.txt | sed '/^$/d' | while read -r i; do PIP install "$i"; done
+
+git clone https://github.com/awslabs/autogluon.git
+
+pip install -e autogluon
+
 #PIP install --no-cache-dir -r $HERE/requirements.txt
