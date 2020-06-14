@@ -48,10 +48,12 @@ def run(dataset, config):
     # print(train.dtypes)
 
     ####
-    X_train = dataset.train.X
-    y_train = dataset.train.y
-    X_test = dataset.test.X
-    y_test = dataset.test.y
+    X_train = pd.DataFrame(dataset.train.data, columns=column_names).infer_objects()
+    # X_train = dataset.train.X
+    # y_train = dataset.train.y
+    X_test = pd.DataFrame(dataset.test.data, columns=column_names).infer_objects()
+    # X_test = dataset.test.X
+    # y_test = dataset.test.y
 
     X_train = task.Dataset(X_train)
     X_test = task.Dataset(X_test)
@@ -69,7 +71,7 @@ def run(dataset, config):
     label = dataset.target.name
 
     X_train = task.Dataset(file_path=train_path)
-    X_train[label] = y_train
+    # X_train[label] = y_train
     ####
 
     print(f"Columns dtypes:\n{X_train.dtypes}")
@@ -94,6 +96,8 @@ def run(dataset, config):
     # y_test = test[label]
 
     X_test = task.Dataset(file_path=test_path)
+    y_test = X_test[label]
+    X_test = X_test.drop(columns=label)
     with Timer() as predict:
         predictions = predictor.predict(X_test)
 
