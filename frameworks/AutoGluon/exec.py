@@ -42,18 +42,9 @@ def run(dataset, config):
 
     column_names, _ = zip(*dataset.columns)
     # column_types = dict(dataset.columns)
-    # train = pd.DataFrame(dataset.train.data, columns=column_names).infer_objects()
-    # print(train2.dtypes)
-    # train = pd.DataFrame(dataset.train.data, columns=column_names).astype(column_types, copy=False)
-    # print(train.dtypes)
 
-    ####
     X_train = pd.DataFrame(dataset.train.data, columns=column_names).infer_objects()
-    # X_train = dataset.train.X
-    # y_train = dataset.train.y
     X_test = pd.DataFrame(dataset.test.data, columns=column_names).infer_objects()
-    # X_test = dataset.test.X
-    # y_test = dataset.test.y
 
     X_train = task.Dataset(X_train)
     X_test = task.Dataset(X_test)
@@ -71,8 +62,6 @@ def run(dataset, config):
     label = dataset.target.name
 
     X_train = task.Dataset(file_path=train_path)
-    # X_train[label] = y_train
-    ####
 
     print(f"Columns dtypes:\n{X_train.dtypes}")
 
@@ -87,13 +76,6 @@ def run(dataset, config):
             eval_metric=perf_metric.name,
             **training_params
         )
-
-
-
-    # test = pd.DataFrame(dataset.test.data, columns=column_names).astype(column_types, copy=False)
-    # test = pd.DataFrame(dataset.test.data, columns=column_names).infer_objects()
-    # X_test = test.drop(columns=label)
-    # y_test = test[label]
 
     X_test = task.Dataset(file_path=test_path)
     y_test = X_test[label]
