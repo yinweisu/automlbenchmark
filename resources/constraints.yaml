@@ -4,38 +4,40 @@ test:
   folds: 1
   max_runtime_seconds: 600
   cores: 4
+  min_vol_size_mb: 1000000
 
 1h4c:
   folds: 10
   max_runtime_seconds: 3600
   cores: 4
+  min_vol_size_mb: 1000000
 
 1h8c:
   folds: 10
   max_runtime_seconds: 3600
   cores: 8
-  min_vol_size_mb: 16384
+  min_vol_size_mb: 1000000
 
 4h8c:
   folds: 10
   max_runtime_seconds: 14400
   cores: 8
-  min_vol_size_mb: 750000
+  min_vol_size_mb: 1000000
 
 8h8c:
   folds: 10
   max_runtime_seconds: 28800
   cores: 8
-  min_vol_size_mb: 131072
+  min_vol_size_mb: 1000000
 
 1h32c:
   folds: 1
   max_runtime_seconds: 3600
   cores: 32
-  min_vol_size_mb: 131072
+  min_vol_size_mb: 1000000
 
 4h32c:
   folds: 1
   max_runtime_seconds: 14400
   cores: 32
-  min_vol_size_mb: 131072
+  min_vol_size_mb: 1000000
