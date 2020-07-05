@@ -32,6 +32,8 @@ def run(dataset, config):
         rmse=metrics.mean_squared_error,  # for now, we can let autogluon optimize training on mse: anyway we compute final score from predictions.
     )
 
+    label = dataset.target.name
+
     perf_metric = metrics_mapping[config.metric] if config.metric in metrics_mapping else None
     if perf_metric is None:
         # TODO: figure out if we are going to blindly pass metrics through, or if we use a strict mapping
@@ -52,6 +54,11 @@ def run(dataset, config):
     train_path = 'tmp/tmp_file_train.csv'
     test_path = 'tmp/tmp_file_test.csv'
 
+    y_train = X_train[label]
+    y_test = X_test[label]
+    X_train = X_train.drop(columns=label)
+    X_test = X_test.drop(columns=label)
+
     save_pd.save(path=train_path, df=X_train)
     save_pd.save(path=test_path, df=X_test)
     del X_train
@@ -59,9 +66,9 @@ def run(dataset, config):
 
     # Save and load data to remove any pre-set dtypes, we want to observe performance from worst-case scenario: raw csv
 
-    label = dataset.target.name
 
     X_train = task.Dataset(file_path=train_path)
+    X_train[label] = y_train
 
     print(f"Columns dtypes:\n{X_train.dtypes}")
 
@@ -78,8 +85,7 @@ def run(dataset, config):
         )
 
     X_test = task.Dataset(file_path=test_path)
-    y_test = X_test[label]
-    X_test = X_test.drop(columns=label)
+
     with Timer() as predict:
         predictions = predictor.predict(X_test)
 
