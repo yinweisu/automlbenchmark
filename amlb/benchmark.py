@@ -378,7 +378,7 @@ class BenchmarkTask:
         def _run():
             self.load_data()
             return self.run(framework, framework_name)
-        timeout_secs = min(self.task_config.max_runtime_seconds * 2,
+        timeout_secs = min(self.task_config.max_runtime_seconds * 8,
                            self.task_config.max_runtime_seconds + rconfig().benchmarks.overhead_time_seconds)
         job = Job(name='_'.join(['local', self.task_config.name, str(self.fold), framework_name]),
                   timeout_secs=timeout_secs)  # this timeout is just to handle edge cases where framework never completes
