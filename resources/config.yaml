@@ -115,8 +115,8 @@ aws:
     monitoring:
       cpu:
         period_minutes: 5
-        delta_minutes: 30
-        threshold: 5
+        delta_minutes: 240
+        threshold: 1
         abort_inactive_instances: true   # stop/terminate instance if its cpu activity was lower than `threshold` %, for all periods or `period_minutes` in the last `delta_minutes`.
         query_frequency_seconds: 300     # set to <= 0 to disable
     instance_type:
@@ -146,7 +146,7 @@ aws:
         description: Ubuntu Server 18.04 LTS (HVM), EBS General Purpose (SSD) VolumeType
 
   max_timeout_seconds: 72000
-  overhead_time_seconds: 1800   # amount of additional time allowed for the job to complete on aws before the instance is stopped.
+  overhead_time_seconds: 14400   # amount of additional time allowed for the job to complete on aws before the instance is stopped.
   query_frequency_seconds: 30
   resource_files: []    # additional resource files or directories that are made available to benchmark runs on ec2, from remote input or user directory.
                         # Those files are actually uploaded to s3 bucket (precisely to s3://{s3.bucket}/{s3.root_key}/user),

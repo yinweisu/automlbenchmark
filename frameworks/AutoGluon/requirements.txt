@@ -1,1 +1,1 @@
-mxnet
+mxnet==1.6
