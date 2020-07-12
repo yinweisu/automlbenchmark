@@ -71,7 +71,9 @@ def run(dataset, config):
     y_test = dataset.test.y_enc
     with Timer() as predict:
         predictions = autoPyTorch.predict(X_test)
-    probabilities = autoPyTorch.predict_proba(X_test) if is_classification else None
+    probabilities = autoPyTorch.predict(X_test, return_probabilities=True)[1] if is_classification else None
+
+    print(probabilities)
 
     return result(output_file=config.output_predictions_file,
                   predictions=predictions,
