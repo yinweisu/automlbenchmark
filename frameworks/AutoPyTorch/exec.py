@@ -10,7 +10,7 @@ os.environ['OPENBLAS_NUM_THREADS'] = '1'
 os.environ['MKL_NUM_THREADS'] = '1'
 import sklearn.metrics
 # TODO: Add AutoNetEnsemble
-from autoPyTorch import AutoNetClassification, AutoNetRegression
+from autoPyTorch import AutoNetEnsemble, AutoNetClassification, AutoNetRegression
 
 from frameworks.shared.callee import call_run, result, Timer, touch
 
@@ -55,12 +55,12 @@ def run(dataset, config):
 
     log.warning("Using meta-learned initialization, which might be bad (leakage).")
     estimator = AutoNetClassification if is_classification else AutoNetRegression
-    autoPyTorch = estimator(
+    autoPyTorch = AutoNetEnsemble(estimator(
         log_level='info',
         max_runtime=config.max_runtime_seconds,
         min_budget=config.max_runtime_seconds/40,
         max_budget=config.max_runtime_seconds/5
-    )
+    ))
 
     with Timer() as training:
         autoPyTorch.fit(X_train, y_train, validation_split=0.33)
