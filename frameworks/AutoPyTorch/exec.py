@@ -55,11 +55,18 @@ def run(dataset, config):
 
     log.warning("Using meta-learned initialization, which might be bad (leakage).")
     estimator = AutoNetClassification if is_classification else AutoNetRegression
-    autoPyTorch = AutoNetEnsemble(estimator,
+    # TODO: Commented out because autoPyTorch fails to load the correct file after training when using AutoNetEnsemble
+    # autoPyTorch = AutoNetEnsemble(estimator,
+    #     log_level='info',
+    #     max_runtime=config.max_runtime_seconds,
+    #     min_budget=config.max_runtime_seconds/40,
+    #     max_budget=config.max_runtime_seconds/5
+    # )
+    autoPyTorch = estimator(
         log_level='info',
         max_runtime=config.max_runtime_seconds,
-        min_budget=config.max_runtime_seconds/40,
-        max_budget=config.max_runtime_seconds/5
+        min_budget=config.max_runtime_seconds / 40,
+        max_budget=config.max_runtime_seconds / 5
     )
 
     with Timer() as training:
