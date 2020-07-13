@@ -129,7 +129,7 @@ aws:
         '8': 2xlarge
         '16': 4xlarge
     root_device_name: '/dev/sda1'
-    volume_type: standard         # one of gp2, io1, st1, sc1, or standard (default)
+    volume_type: gp2         # one of gp2, io1, st1, sc1, or standard (default)
     subnet_id: ''
     regions:
       us-east-1:
