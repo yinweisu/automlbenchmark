@@ -9,10 +9,11 @@ if [[ -x "$(command -v brew)" ]]; then
     brew install libomp
 fi
 
-cat $HERE/requirements.txt | sed '/^$/d' | while read -r i; do PIP install "$i"; done
+# cat $HERE/requirements.txt | sed '/^$/d' | while read -r i; do PIP install "$i"; done
+pip install -U --pre "mxnet>=1.7.0b20200713, <2.0.0" -f https://sxjscience.github.io/KDD2020/
 
 # git clone https://github.com/awslabs/autogluon.git
-git clone -b tabular_custom_model_support --single-branch https://github.com/awslabs/autogluon.git
+git clone -b master --single-branch https://github.com/awslabs/autogluon.git
 
 PIP install -e autogluon
 
