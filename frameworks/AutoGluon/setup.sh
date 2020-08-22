@@ -10,7 +10,7 @@ if [[ -x "$(command -v brew)" ]]; then
 fi
 
 # cat $HERE/requirements.txt | sed '/^$/d' | while read -r i; do PIP install "$i"; done
-pip install -U --pre "mxnet>=1.7.0b20200713, <2.0.0" -f https://sxjscience.github.io/KDD2020/
+PIP install -U --pre "mxnet>=1.7.0b20200713, <2.0.0" -f https://sxjscience.github.io/KDD2020/
 
 # git clone https://github.com/awslabs/autogluon.git
 git clone -b master --single-branch https://github.com/awslabs/autogluon.git
