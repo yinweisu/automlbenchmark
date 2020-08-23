@@ -1,3 +1,4 @@
+import gc
 import logging
 import os
 import shutil
@@ -33,6 +34,7 @@ def run(dataset, config):
     )
 
     label = dataset.target.name
+    problem_type = dataset.problem_type
 
     perf_metric = metrics_mapping[config.metric] if config.metric in metrics_mapping else None
     if perf_metric is None:
@@ -63,10 +65,10 @@ def run(dataset, config):
     save_pd.save(path=test_path, df=X_test)
     del X_train
     del X_test
+    del dataset
+    gc.collect()
 
     # Save and load data to remove any pre-set dtypes, we want to observe performance from worst-case scenario: raw csv
-
-
     X_train = task.Dataset(file_path=train_path)
     X_train[label] = y_train
 
@@ -77,15 +79,18 @@ def run(dataset, config):
         predictor = task.fit(
             train_data=X_train,
             label=label,
-            problem_type=dataset.problem_type,
+            problem_type=problem_type,
             output_directory=output_dir,
             time_limits=config.max_runtime_seconds,
             eval_metric=perf_metric.name,
             **training_params
         )
 
-    X_test = task.Dataset(file_path=test_path)
+    del X_train
+    del y_train
+    gc.collect()
 
+    X_test = task.Dataset(file_path=test_path)
     with Timer() as predict:
         predictions = predictor.predict(X_test)
 
