@@ -47,7 +47,7 @@ TunedRandomForest:
 
 ### AutoML frameworks
 AutoGluon:
-  version: "0.0.9"
+  version: "0.0.13"
   project: https://autogluon.mxnet.io
 
 AutoGluon_best:
@@ -55,6 +55,12 @@ AutoGluon_best:
   description: "provides the most accurate overall predictor"
   params:
     presets: best_quality
+
+AutoGluon_xt:
+  extends: AutoGluon
+  description: "for testing"
+  params:
+    hyperparameters: {'XT': {}}
 
 autosklearn:
   version: '0.6.0'
