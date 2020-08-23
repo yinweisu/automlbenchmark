@@ -60,7 +60,8 @@ AutoGluon_xt:
   extends: AutoGluon
   description: "for testing"
   params:
-    hyperparameters: {'XT': {}}
+    hyperparameters: {'XT': [{}, {}, {}, {}, {}]}
+    verbosity: 3
 
 autosklearn:
   version: '0.6.0'
