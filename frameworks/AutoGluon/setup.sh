@@ -13,7 +13,7 @@ fi
 PIP install -U --pre "mxnet>=1.7.0b20200713, <2.0.0" -f https://sxjscience.github.io/KDD2020/
 
 # git clone https://github.com/awslabs/autogluon.git
-git clone -b NNearlystop --single-branch https://github.com/awslabs/autogluon.git
+git clone -b tabular_multi_layer_weighted_ensemble --single-branch https://github.com/awslabs/autogluon.git
 
 PIP install -e autogluon
 
