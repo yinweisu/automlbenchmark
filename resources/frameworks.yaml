@@ -47,7 +47,7 @@ TunedRandomForest:
 
 ### AutoML frameworks
 AutoGluon:
-  version: "0.0.13"
+  version: "0.0.14"
   project: https://autogluon.mxnet.io
 
 AutoGluon_best:
@@ -62,6 +62,36 @@ AutoGluon_xt:
   params:
     hyperparameters: {'XT': [{}, {}, {}, {}, {}]}
     verbosity: 3
+
+AutoGluon_fastai:
+  extends: AutoGluon
+  description: "for testing"
+  params:
+    hyperparameters: {'NN': {},
+                      'GBM': {},
+                      'CAT': {},
+                      'RF': [
+                      {'criterion': 'gini', 'AG_args': {'name_suffix': 'Gini', 'problem_types': ['binary', 'multiclass']}},
+                      {'criterion': 'entropy', 'AG_args': {'name_suffix': 'Entr', 'problem_types': ['binary', 'multiclass']}},
+                      {'criterion': 'mse', 'AG_args': {'name_suffix': 'MSE', 'problem_types': ['regression']}},
+                      ],
+                      'XT': [
+                      {'criterion': 'gini', 'AG_args': {'name_suffix': 'Gini', 'problem_types': ['binary', 'multiclass']}},
+                      {'criterion': 'entropy', 'AG_args': {'name_suffix': 'Entr', 'problem_types': ['binary', 'multiclass']}},
+                      {'criterion': 'mse', 'AG_args': {'name_suffix': 'MSE', 'problem_types': ['regression']}},
+                      ],
+                      'KNN': [
+                      {'weights': 'uniform', 'AG_args': {'name_suffix': 'Unif'}},
+                      {'weights': 'distance', 'AG_args': {'name_suffix': 'Dist'}},
+                      ],
+                      'FASTAINN': {},
+                      'custom': ['GBM'],}
+
+AutoGluon_fastai_best:
+  extends: AutoGluon_fastai
+  description: "for testing"
+  params:
+    presets: best_quality
 
 autosklearn:
   version: '0.6.0'
