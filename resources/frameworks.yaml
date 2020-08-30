@@ -81,6 +81,11 @@ AutoGluon_rf:
   params:
     hyperparameters: {RF: {}}
 
+AutoGluon_xt:
+  extends: AutoGluon
+  params:
+    hyperparameters: {'XT': {}}
+
 AutoGluon_knn:
   extends: AutoGluon
   params:
@@ -91,14 +96,7 @@ AutoGluon_nn:
   params:
     hyperparameters: {NN: {}}
 
-AutoGluon_xt:
-  extends: AutoGluon
-  description: "for testing"
-  params:
-    hyperparameters: {'XT': [{}, {}, {}, {}, {}]}
-    verbosity: 3
-
-AutoGluon_fastai:
+AutoGluon_fastai_ensemble:
   extends: AutoGluon
   description: "for testing"
   params:
