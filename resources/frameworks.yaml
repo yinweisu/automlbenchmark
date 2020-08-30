@@ -56,6 +56,41 @@ AutoGluon_best:
   params:
     presets: best_quality
 
+AutoGluon_fastai:
+  extends: AutoGluon
+  params:
+    hyperparameters: {FASTAINN: {}}
+
+AutoGluon_catboost:
+  extends: AutoGluon
+  params:
+    hyperparameters: {CAT: {}}
+
+AutoGluon_lgbm_custom:
+  extends: AutoGluon
+  params:
+    hyperparameters: {custom: ['GBM']}
+
+AutoGluon_lgbm:
+  extends: AutoGluon
+  params:
+    hyperparameters: {GBM: {}}
+
+AutoGluon_rf:
+  extends: AutoGluon
+  params:
+    hyperparameters: {RF: {}}
+
+AutoGluon_knn:
+  extends: AutoGluon
+  params:
+    hyperparameters: {KNN: {}}
+
+AutoGluon_nn:
+  extends: AutoGluon
+  params:
+    hyperparameters: {NN: {}}
+
 AutoGluon_xt:
   extends: AutoGluon
   description: "for testing"
