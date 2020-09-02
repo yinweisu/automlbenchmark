@@ -117,7 +117,7 @@ AutoGluon_fastai_ensemble:
                       {'weights': 'uniform', 'AG_args': {'name_suffix': 'Unif'}},
                       {'weights': 'distance', 'AG_args': {'name_suffix': 'Dist'}},
                       ],
-                      'FASTAINN': {},
+                      'FASTAI': {},
                       'custom': ['GBM'],}
 
 AutoGluon_fastai_best:
@@ -142,7 +142,7 @@ AutoGluon_fastai_best:
                       {'weights': 'uniform', 'AG_args': {'name_suffix': 'Unif'}},
                       {'weights': 'distance', 'AG_args': {'name_suffix': 'Dist'}},
                       ],
-                      'FASTAINN': {},
+                      'FASTAI': {},
                       'custom': ['GBM'],}
 
 autosklearn:

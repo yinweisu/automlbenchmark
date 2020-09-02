@@ -97,6 +97,8 @@ def run(dataset, config):
     probabilities = predictor.predict_proba(dataset=X_test, as_pandas=True, as_multiclass=True) if is_classification else None
     prob_labels = probabilities.columns.values.tolist() if probabilities is not None else None
 
+    gc.collect()
+
     leaderboard = predictor._learner.leaderboard(X_test, y_test, extra_info=True, silent=True)
     with pd.option_context('display.max_rows', None, 'display.max_columns', None, 'display.width', 1000):
         print(leaderboard)
