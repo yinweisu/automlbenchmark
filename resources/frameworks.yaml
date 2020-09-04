@@ -76,6 +76,12 @@ AutoGluon_lgbm:
   params:
     hyperparameters: {GBM: {}}
 
+AutoGluon_lgbm_hpo:
+  extends: AutoGluon
+  params:
+    hyperparameter_tune: true
+    hyperparameters: {GBM: {}}
+
 AutoGluon_rf:
   extends: AutoGluon
   params:
