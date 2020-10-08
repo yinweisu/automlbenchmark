@@ -9,9 +9,13 @@ import matplotlib
 import pandas as pd
 matplotlib.use('agg')  # no need for tk
 
-from autogluon.task.tabular_prediction.tabular_prediction import TabularPrediction as task
-from autogluon.utils.tabular.utils.savers import save_pd, save_pkl
-import autogluon.utils.tabular.metrics as metrics
+# from autogluon.task.tabular_prediction.tabular_prediction import TabularPrediction as task
+# from autogluon.utils.tabular.utils.savers import save_pd, save_pkl
+# import autogluon.utils.tabular.metrics as metrics
+
+from autogluon.tabular import TabularPrediction as task
+from autogluon.core.utils.savers import save_pd, save_pkl
+import autogluon.tabular.utils.metrics as metrics
 
 from frameworks.shared.callee import NS, call_run, result, Timer, touch
 
