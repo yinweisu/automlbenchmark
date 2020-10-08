@@ -19,6 +19,7 @@ cat $HERE/requirements.txt | sed '/^$/d' | while read -r i; do PIP install "$i";
 #####
 
 #####
+PIP install -U setuptools
 git clone -b modules-v2 --single-branch https://github.com/gradientsky/autogluon.git
 cd autogluon
 PIP install -e core/
