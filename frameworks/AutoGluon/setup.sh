@@ -10,18 +10,11 @@ if [[ -x "$(command -v brew)" ]]; then
 fi
 
 cat $HERE/requirements.txt | sed '/^$/d' | while read -r i; do PIP install "$i"; done
-# PIP install -U --pre "mxnet>=1.7.0b20200713, <2.0.0" -f https://sxjscience.github.io/KDD2020/
-
-#####
-# git clone https://github.com/awslabs/autogluon.git
-# git clone -b master --single-branch https://github.com/awslabs/autogluon.git
-# PIP install -e autogluon
-#####
 
 #####
 PIP install -U setuptools
-# git clone -b modules-v2 --single-branch https://github.com/gradientsky/autogluon.git
-git clone -b tabular_xgboost --single-branch https://github.com/sackoh/autogluon.git
+git clone -b tabular_stateful_preprocessing --single-branch https://github.com/awslabs/autogluon.git
+# git clone -b tabular_xgboost --single-branch https://github.com/sackoh/autogluon.git
 cd autogluon
 PIP install -e core/
 PIP install -e tabular/
