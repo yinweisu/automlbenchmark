@@ -14,7 +14,8 @@ cat $HERE/requirements.txt | sed '/^$/d' | while read -r i; do PIP install "$i";
 #####
 PIP install -U setuptools
 # git clone -b tabular_stateful_preprocessing --single-branch https://github.com/awslabs/autogluon.git
-git clone -b tabular_xgboost --single-branch https://github.com/sackoh/autogluon.git
+# git clone -b tabular_xgboost --single-branch https://github.com/sackoh/autogluon.git
+git clone -b master --single-branch https://github.com/Chudbrochil/autogluon.git
 cd autogluon
 PIP install -e core/
 PIP install -e tabular/
