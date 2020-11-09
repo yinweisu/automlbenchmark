@@ -79,10 +79,10 @@ def run(dataset, config):
     print(f"Columns dtypes:\n{X_train.dtypes}")
 
     ###### TODO FIXME REMOVE #######
-    from autogluon.tabular.task.tabular_prediction.hyperparameter_configs import get_hyperparameter_config
-    hyperparameters = get_hyperparameter_config('default')
-    hyperparameters['TRANSF'] = {}
-    training_params['hyperparameters'] = hyperparameters
+    # from autogluon.tabular.task.tabular_prediction.hyperparameter_configs import get_hyperparameter_config
+    # hyperparameters = get_hyperparameter_config('default')
+    # hyperparameters['TRANSF'] = {}
+    # training_params['hyperparameters'] = hyperparameters
     ###### TODO FIXME REMOVE #######
 
     output_dir = make_subdir("models", config)
