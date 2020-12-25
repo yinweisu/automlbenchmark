@@ -61,13 +61,18 @@ def run(dataset, config):
     X_test = test.drop(columns=label)
     y_test = test[label]
 
-    with utils.Timer() as predict:
-        predictions = predictor.predict(X_test)
+    if is_classification:
+        with utils.Timer() as predict:
+            probabilities = predictor.predict_proba(X_test, as_pandas=True, as_multiclass=True)
+        predictions = probabilities.idxmax(axis=1).to_numpy()
+    else:
+        with utils.Timer() as predict:
+            predictions = predictor.predict(X_test)
+        probabilities = None
 
-    probabilities = predictor.predict_proba(dataset=X_test, as_pandas=True, as_multiclass=True) if is_classification else None
     prob_labels = probabilities.columns.values.tolist() if probabilities is not None else None
 
-    leaderboard = predictor._learner.leaderboard(X_test, y_test, silent=True)
+    leaderboard = predictor.leaderboard(silent=True)  # Removed test data input to avoid long running computation, remove 7200s timeout limitation to re-enable
     with pd.option_context('display.max_rows', None, 'display.max_columns', None, 'display.width', 1000):
         print(leaderboard)
 
