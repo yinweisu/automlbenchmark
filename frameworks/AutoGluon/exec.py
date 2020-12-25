@@ -6,17 +6,28 @@ warnings.simplefilter("ignore")
 
 import pandas as pd
 
-from autogluon.tabular import TabularPrediction as task
-from autogluon.core.utils.savers import save_pd, save_pkl
-import autogluon.core.metrics as metrics
-from autogluon.tabular.version import __version__
-
 from frameworks.shared.callee import call_run, result, output_subdir, utils, save_metadata
 
 log = logging.getLogger(__name__)
 
 
 def run(dataset, config):
+
+
+    is_classification = config.type == 'classification'
+    training_params = {k: v for k, v in config.framework_params.items() if not k.startswith('_')}
+
+    column_names, _ = zip(*dataset.columns)
+    column_types = dict(dataset.columns)
+    train = pd.DataFrame(dataset.train.data, columns=column_names).astype(column_types, copy=False)
+    label = dataset.target.name
+    print(f"Columns dtypes:\n{train.dtypes}")
+
+    from autogluon.tabular import TabularPrediction as task
+    from autogluon.core.utils.savers import save_pd, save_pkl
+    import autogluon.core.metrics as metrics
+    from autogluon.tabular.version import __version__
+
     log.info(f"\n**** AutoGluon [v{__version__}] ****\n")
     print('test!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
     save_metadata(config, version=__version__)
@@ -36,15 +47,6 @@ def run(dataset, config):
     if perf_metric is None:
         # TODO: figure out if we are going to blindly pass metrics through, or if we use a strict mapping
         log.warning("Performance metric %s not supported.", config.metric)
-
-    is_classification = config.type == 'classification'
-    training_params = {k: v for k, v in config.framework_params.items() if not k.startswith('_')}
-
-    column_names, _ = zip(*dataset.columns)
-    column_types = dict(dataset.columns)
-    train = pd.DataFrame(dataset.train.data, columns=column_names).astype(column_types, copy=False)
-    label = dataset.target.name
-    print(f"Columns dtypes:\n{train.dtypes}")
 
     output_dir = output_subdir("models", config)
     with utils.Timer() as training:
