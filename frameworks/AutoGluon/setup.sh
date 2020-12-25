@@ -7,6 +7,7 @@ PKG=${4:-"autogluon"}
 if [[ "$VERSION" == "latest" ]]; then
     VERSION="master"
 fi
+# FIXME: Hack
 if [[ "$VERSION" == "stable" ]]; then
     VERSION="0.0.16b20201224"
 fi
@@ -23,11 +24,7 @@ PIP install --upgrade pip
 PIP install --upgrade setuptools
 PIP install "mxnet<=2.0.0"
 
-# cat ${HERE}/requirements.txt | sed '/^$/d' | while read -r i; do PIP install "$i"; done
-
-
 if [[ "$VERSION" == "stable" ]]; then
-    # FIXME: --pre is a hack
     PIP install --no-cache-dir -U ${PKG}
 elif [[ "$VERSION" =~ ^[0-9] ]]; then
     PIP install --no-cache-dir -U ${PKG}==${VERSION}
