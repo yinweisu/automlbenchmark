@@ -4,9 +4,7 @@ import shutil
 import warnings
 warnings.simplefilter("ignore")
 
-import matplotlib
 import pandas as pd
-matplotlib.use('agg')  # no need for tk
 
 from autogluon.tabular import TabularPrediction as task
 from autogluon.core.utils.savers import save_pd, save_pkl
@@ -20,6 +18,7 @@ log = logging.getLogger(__name__)
 
 def run(dataset, config):
     log.info(f"\n**** AutoGluon [v{__version__}] ****\n")
+    print('test!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
     save_metadata(config, version=__version__)
 
     metrics_mapping = dict(
