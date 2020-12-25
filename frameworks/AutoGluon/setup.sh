@@ -7,6 +7,9 @@ PKG=${4:-"autogluon"}
 if [[ "$VERSION" == "latest" ]]; then
     VERSION="master"
 fi
+if [[ "$VERSION" == "stable" ]]; then
+    VERSION="0.0.16b20201224"
+fi
 
 # creating local venv
 . ${HERE}/../shared/setup.sh ${HERE}
@@ -25,7 +28,7 @@ PIP install "mxnet<=2.0.0"
 
 if [[ "$VERSION" == "stable" ]]; then
     # FIXME: --pre is a hack
-    PIP install --pre --no-cache-dir -U ${PKG}
+    PIP install --no-cache-dir -U ${PKG}
 elif [[ "$VERSION" =~ ^[0-9] ]]; then
     PIP install --no-cache-dir -U ${PKG}==${VERSION}
 else
