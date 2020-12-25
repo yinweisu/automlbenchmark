@@ -8,10 +8,16 @@ import matplotlib
 import pandas as pd
 matplotlib.use('agg')  # no need for tk
 
-from autogluon.task.tabular_prediction.tabular_prediction import TabularPrediction as task
-from autogluon.utils.tabular.utils.savers import save_pd, save_pkl
-import autogluon.utils.tabular.metrics as metrics
-from autogluon.version import __version__
+try:  # >=0.1
+    from autogluon.tabular import TabularPrediction as task
+    from autogluon.core.utils.savers import save_pd, save_pkl
+    import autogluon.core.metrics as metrics
+    from autogluon.tabular.version import __version__
+except:  # <0.1
+    from autogluon.task.tabular_prediction.tabular_prediction import TabularPrediction as task
+    from autogluon.utils.tabular.utils.savers import save_pd, save_pkl
+    import autogluon.utils.tabular.metrics as metrics
+    from autogluon.version import __version__
 
 from frameworks.shared.callee import call_run, result, output_subdir, utils, save_metadata
 
@@ -30,8 +36,7 @@ def run(dataset, config):
         mae=metrics.mean_absolute_error,
         mse=metrics.mean_squared_error,
         r2=metrics.r2,
-        # rmse=metrics.root_mean_squared_error,  # metrics.root_mean_squared_error incorrectly registered in autogluon REGRESSION_METRICS
-        rmse=metrics.mean_squared_error,  # for now, we can let autogluon optimize training on mse: anyway we compute final score from predictions.
+        rmse=metrics.root_mean_squared_error,
     )
 
     perf_metric = metrics_mapping[config.metric] if config.metric in metrics_mapping else None

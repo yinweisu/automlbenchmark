@@ -16,10 +16,16 @@ if [[ -x "$(command -v brew)" ]]; then
     brew install libomp
 fi
 
-cat ${HERE}/requirements.txt | sed '/^$/d' | while read -r i; do PIP install "$i"; done
+PIP install --upgrade pip
+PIP install --upgrade setuptools
+PIP install "mxnet<=2.0.0"
+
+# cat ${HERE}/requirements.txt | sed '/^$/d' | while read -r i; do PIP install "$i"; done
+
 
 if [[ "$VERSION" == "stable" ]]; then
-    PIP install --no-cache-dir -U ${PKG}
+    # FIXME: --pre is a hack
+    PIP install --pre --no-cache-dir -U ${PKG}
 elif [[ "$VERSION" =~ ^[0-9] ]]; then
     PIP install --no-cache-dir -U ${PKG}==${VERSION}
 else
