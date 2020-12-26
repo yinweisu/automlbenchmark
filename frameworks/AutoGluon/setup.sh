@@ -33,5 +33,12 @@ else
     TARGET_DIR="${HERE}/lib/${PKG}"
     rm -Rf ${TARGET_DIR}
     git clone --depth 1 --single-branch --branch ${VERSION} --recurse-submodules ${REPO} ${TARGET_DIR}
-    PIP install -U -e ${TARGET_DIR}
+    cd ${TARGET_DIR}
+    PIP install -e core/
+    PIP install -e tabular/
+    PIP install -e mxnet/
+    PIP install -e extra/
+    PIP install -e text/
+    PIP install -e vision/
+    PIP install -e autogluon/
 fi
