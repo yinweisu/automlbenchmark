@@ -41,9 +41,69 @@ AutoGluon_raw:
     _load_raw: true
 
 AutoGluon_bestquality_raw:
-  extends: AutoGluon_bestquality
+  extends: AutoGluon
   params:
+    presets: best_quality
     _load_raw: true
+
+AutoGluon_fastai:
+  extends: AutoGluon
+  params:
+    hyperparameters: {
+      'NN': { },
+      'GBM': [
+        { },
+        { 'extra_trees': True, 'AG_args': { 'name_suffix': 'XT' } },
+      ],
+      'CAT': { },
+      'XGB': { },
+      'RF': [
+        { 'criterion': 'gini', 'AG_args': { 'name_suffix': 'Gini', 'problem_types': [ 'binary', 'multiclass' ] } },
+        { 'criterion': 'entropy', 'AG_args': { 'name_suffix': 'Entr', 'problem_types': [ 'binary', 'multiclass' ] } },
+        { 'criterion': 'mse', 'AG_args': { 'name_suffix': 'MSE', 'problem_types': [ 'regression' ] } },
+      ],
+      'XT': [
+        { 'criterion': 'gini', 'AG_args': { 'name_suffix': 'Gini', 'problem_types': [ 'binary', 'multiclass' ] } },
+        { 'criterion': 'entropy', 'AG_args': { 'name_suffix': 'Entr', 'problem_types': [ 'binary', 'multiclass' ] } },
+        { 'criterion': 'mse', 'AG_args': { 'name_suffix': 'MSE', 'problem_types': [ 'regression' ] } },
+      ],
+      'KNN': [
+        { 'weights': 'uniform', 'AG_args': { 'name_suffix': 'Unif' } },
+        { 'weights': 'distance', 'AG_args': { 'name_suffix': 'Dist' } },
+      ],
+      'FASTAI': { },
+      'custom': [ 'GBM' ],
+    }
+
+AutoGluon_bestquality_fastai:
+  extends: AutoGluon
+  params:
+    presets: best_quality
+    hyperparameters: {
+      'NN': { },
+      'GBM': [
+        { },
+        { 'extra_trees': True, 'AG_args': { 'name_suffix': 'XT' } },
+      ],
+      'CAT': { },
+      'XGB': { },
+      'RF': [
+        { 'criterion': 'gini', 'AG_args': { 'name_suffix': 'Gini', 'problem_types': [ 'binary', 'multiclass' ] } },
+        { 'criterion': 'entropy', 'AG_args': { 'name_suffix': 'Entr', 'problem_types': [ 'binary', 'multiclass' ] } },
+        { 'criterion': 'mse', 'AG_args': { 'name_suffix': 'MSE', 'problem_types': [ 'regression' ] } },
+      ],
+      'XT': [
+        { 'criterion': 'gini', 'AG_args': { 'name_suffix': 'Gini', 'problem_types': [ 'binary', 'multiclass' ] } },
+        { 'criterion': 'entropy', 'AG_args': { 'name_suffix': 'Entr', 'problem_types': [ 'binary', 'multiclass' ] } },
+        { 'criterion': 'mse', 'AG_args': { 'name_suffix': 'MSE', 'problem_types': [ 'regression' ] } },
+      ],
+      'KNN': [
+        { 'weights': 'uniform', 'AG_args': { 'name_suffix': 'Unif' } },
+        { 'weights': 'distance', 'AG_args': { 'name_suffix': 'Dist' } },
+      ],
+      'FASTAI': { },
+      'custom': [ 'GBM' ],
+    }
 
 autosklearn:
   version: 'stable'
