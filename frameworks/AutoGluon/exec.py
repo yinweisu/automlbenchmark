@@ -2,6 +2,7 @@ import logging
 import os
 import shutil
 import warnings
+import gc
 warnings.simplefilter("ignore")
 
 import pandas as pd
@@ -31,6 +32,9 @@ def run(dataset, config):
         rmse=metrics.root_mean_squared_error,
     )
 
+    label = dataset.target.name
+    problem_type = dataset.problem_type
+
     perf_metric = metrics_mapping[config.metric] if config.metric in metrics_mapping else None
     if perf_metric is None:
         # TODO: figure out if we are going to blindly pass metrics through, or if we use a strict mapping
@@ -39,35 +43,43 @@ def run(dataset, config):
     is_classification = config.type == 'classification'
     training_params = {k: v for k, v in config.framework_params.items() if not k.startswith('_')}
 
-    column_names, _ = zip(*dataset.columns)
-    column_types = dict(dataset.columns)
-    train = pd.DataFrame(dataset.train.data, columns=column_names).astype(column_types, copy=False)
-    label = dataset.target.name
-    print(f"Columns dtypes:\n{train.dtypes}")
+    load_raw = config.framework_params.get('_load_raw', False)
+    if load_raw:
+        train, test = load_data_raw(dataset=dataset)
+    else:
+        column_names, _ = zip(*dataset.columns)
+        column_types = dict(dataset.columns)
+        train = pd.DataFrame(dataset.train.data, columns=column_names).astype(column_types, copy=False)
+        print(f"Columns dtypes:\n{train.dtypes}")
+        test = pd.DataFrame(dataset.test.data, columns=column_names).astype(column_types, copy=False)
+
+    del dataset
+    gc.collect()
 
     output_dir = output_subdir("models", config)
     with utils.Timer() as training:
         predictor = task.fit(
             train_data=train,
             label=label,
-            problem_type=dataset.problem_type,
+            problem_type=problem_type,
             output_directory=output_dir,
             time_limits=config.max_runtime_seconds,
             eval_metric=perf_metric.name,
             **training_params
         )
 
-    test = pd.DataFrame(dataset.test.data, columns=column_names).astype(column_types, copy=False)
-    X_test = test.drop(columns=label)
+    del train
+
     y_test = test[label]
+    test = test.drop(columns=label)
 
     if is_classification:
         with utils.Timer() as predict:
-            probabilities = predictor.predict_proba(X_test, as_pandas=True, as_multiclass=True)
+            probabilities = predictor.predict_proba(test, as_pandas=True, as_multiclass=True)
         predictions = probabilities.idxmax(axis=1).to_numpy()
     else:
         with utils.Timer() as predict:
-            predictions = predictor.predict(X_test)
+            predictions = predictor.predict(test)
         probabilities = None
 
     prob_labels = probabilities.columns.values.tolist() if probabilities is not None else None
@@ -120,6 +132,38 @@ def save_artifacts(predictor, leaderboard, config):
 
     except Exception:
         log.warning("Error when saving artifacts.", exc_info=True)
+
+
+def load_data_raw(dataset):
+    label = dataset.target.name
+    column_names, _ = zip(*dataset.columns)
+    train = pd.DataFrame(dataset.train.data, columns=column_names).infer_objects()
+    test = pd.DataFrame(dataset.test.data, columns=column_names).infer_objects()
+
+    train = task.Dataset(train)
+    test = task.Dataset(test)
+
+    # TODO: Use temp files / in-memory files
+    train_path = 'tmp/tmp_file_train.csv'
+    test_path = 'tmp/tmp_file_test.csv'
+
+    y_train = train[label]
+    y_test = test[label]
+    train = train.drop(columns=label)
+    test = test.drop(columns=label)
+
+    save_pd.save(path=train_path, df=train)
+    save_pd.save(path=test_path, df=test)
+    del train
+    del test
+
+    # Save and load data to remove any pre-set dtypes, we want to observe performance from worst-case scenario: raw csv
+    train = task.Dataset(file_path=train_path)
+    train[label] = y_train
+    test = task.Dataset(file_path=test_path)
+    test[label] = y_test
+
+    return train, test
 
 
 if __name__ == '__main__':

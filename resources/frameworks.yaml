@@ -35,6 +35,16 @@ AutoGluon_bestquality:
   params:
     presets: best_quality
 
+AutoGluon_raw:
+  extends: AutoGluon
+  params:
+    _load_raw: true
+
+AutoGluon_bestquality_raw:
+  extends: AutoGluon_bestquality
+  params:
+    _load_raw: true
+
 autosklearn:
   version: 'stable'
   description: |
