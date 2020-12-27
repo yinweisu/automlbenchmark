@@ -30,6 +30,10 @@ elif [[ "$VERSION" =~ ^[0-9] ]]; then
     PIP install --no-cache-dir -U ${PKG}==${VERSION}
 else
 #    PIP install --no-cache-dir -e git+${REPO}@${VERSION}#egg={PKG}
+
+    # FIXME: HACK
+    VERSION="tabular_api_refactor"
+
     TARGET_DIR="${HERE}/lib/${PKG}"
     rm -Rf ${TARGET_DIR}
     git clone --depth 1 --single-branch --branch ${VERSION} --recurse-submodules ${REPO} ${TARGET_DIR}
