@@ -105,6 +105,21 @@ AutoGluon_bestquality_fastai:
       'custom': [ 'GBM' ],
     }
 
+AutoGluonLegacy:
+  version: "0.0.15"
+  description: |
+    AutoGluon-Tabular: Unlike existing AutoML frameworks that primarily focus on model/hyperparameter selection,
+    AutoGluon-Tabular succeeds by ensembling multiple models and stacking them in multiple layers.
+  project: https://auto.gluon.ai
+  refs: [https://arxiv.org/abs/2003.06505]
+
+AutoGluonLegacy_bestquality:
+  extends: AutoGluonLegacy
+  description: |
+    AutoGluon with 'best_quality' preset provides the most accurate overall predictor.
+  params:
+    presets: best_quality
+
 autosklearn:
   version: 'stable'
   description: |

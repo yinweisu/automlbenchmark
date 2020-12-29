@@ -1,1 +1,1 @@
-mxnet
+mxnet<2.0
