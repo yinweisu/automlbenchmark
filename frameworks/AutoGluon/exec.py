@@ -3,9 +3,12 @@ import os
 import shutil
 import warnings
 import gc
+from io import StringIO
 warnings.simplefilter("ignore")
 
+import matplotlib
 import pandas as pd
+matplotlib.use('agg')  # no need for tk
 
 from autogluon.tabular import TabularPrediction as task
 from autogluon.core.utils.savers import save_pd, save_pkl
@@ -135,35 +138,36 @@ def save_artifacts(predictor, leaderboard, config):
 
 
 def load_data_raw(dataset):
+    """
+    Save and load data while removing all preset dtype information.
+    This represents the most challenging scenario of reading from raw CSV without dtype information.
+    """
     label = dataset.target.name
     column_names, _ = zip(*dataset.columns)
     train = pd.DataFrame(dataset.train.data, columns=column_names).infer_objects()
     test = pd.DataFrame(dataset.test.data, columns=column_names).infer_objects()
 
-    train = task.Dataset(train)
-    test = task.Dataset(test)
-
-    # TODO: Use temp files / in-memory files
-    train_path = 'tmp/tmp_file_train.csv'
-    test_path = 'tmp/tmp_file_test.csv'
-
-    y_train = train[label]
-    y_test = test[label]
-    train = train.drop(columns=label)
-    test = test.drop(columns=label)
-
-    save_pd.save(path=train_path, df=train)
-    save_pd.save(path=test_path, df=test)
-    del train
-    del test
-
-    # Save and load data to remove any pre-set dtypes, we want to observe performance from worst-case scenario: raw csv
-    train = task.Dataset(file_path=train_path)
-    train[label] = y_train
-    test = task.Dataset(file_path=test_path)
-    test[label] = y_test
+    # Save and load data to remove any pre-set dtypes, observe performance from worst-case scenario: raw csv
+    train = convert_to_raw(train, label=label)
+    test = convert_to_raw(test, label=label)
 
     return train, test
+
+
+# Remove custom type information
+def convert_to_raw(X, label=None):
+    if label is not None:
+        y = X[label]
+        X = X.drop(columns=[label])
+    else:
+        y = None
+    with StringIO() as buffer:
+        X.to_csv(buffer, index=True, header=True)
+        buffer.seek(0)
+        X = pd.read_csv(buffer, index_col=0, header=0, low_memory=False, encoding='utf-8')
+    if label is not None:
+        X[label] = y
+    return X
 
 
 if __name__ == '__main__':

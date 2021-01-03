@@ -24,10 +24,6 @@ PIP install --upgrade pip
 PIP install --upgrade setuptools
 PIP install "mxnet<2.0.0"
 
-# FASTAI
-PIP install "torch<2.0.0"
-PIP install "fastai<2.0"
-
 if [[ "$VERSION" == "stable" ]]; then
     PIP install --no-cache-dir -U ${PKG}
 elif [[ "$VERSION" =~ ^[0-9] ]]; then
@@ -36,8 +32,8 @@ else
 #    PIP install --no-cache-dir -e git+${REPO}@${VERSION}#egg={PKG}
 
     # FIXME: HACK
-    VERSION="20201215_fastai_nn_updates"
-    REPO="https://github.com/gradientsky/autogluon.git"
+    # VERSION="20201215_fastai_nn_updates"
+    # REPO="https://github.com/gradientsky/autogluon.git"
 
     TARGET_DIR="${HERE}/lib/${PKG}"
     rm -Rf ${TARGET_DIR}
