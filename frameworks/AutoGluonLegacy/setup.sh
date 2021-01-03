@@ -7,6 +7,9 @@ PKG=${4:-"autogluon"}
 if [[ "$VERSION" == "latest" ]]; then
     VERSION="master"
 fi
+if [[ "$VERSION" == "stable" ]]; then
+    VERSION="0.0.15"
+fi
 
 # creating local venv
 . ${HERE}/../shared/setup.sh ${HERE}
