@@ -32,8 +32,8 @@ else
 #    PIP install --no-cache-dir -e git+${REPO}@${VERSION}#egg={PKG}
 
     # FIXME: HACK
-    # VERSION="tabular_knn_time_limit"
-    # REPO="https://github.com/gradientsky/autogluon.git"
+    VERSION="master"
+    REPO="https://github.com/gradientsky/autogluon.git"
 
     TARGET_DIR="${HERE}/lib/${PKG}"
     rm -Rf ${TARGET_DIR}
