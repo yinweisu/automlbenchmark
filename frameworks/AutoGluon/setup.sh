@@ -9,7 +9,7 @@ if [[ "$VERSION" == "latest" ]]; then
 fi
 # FIXME: Hack
 if [[ "$VERSION" == "stable" ]]; then
-    VERSION="0.0.16b20201230"
+    VERSION="0.0.16b20210104"
 fi
 
 # creating local venv
