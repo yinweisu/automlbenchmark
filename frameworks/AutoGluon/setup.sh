@@ -32,7 +32,7 @@ else
 #    PIP install --no-cache-dir -e git+${REPO}@${VERSION}#egg={PKG}
 
     # FIXME: HACK
-    # VERSION="20201215_fastai_nn_updates"
+    VERSION="tabular_fix_text_fai"
     # REPO="https://github.com/gradientsky/autogluon.git"
 
     TARGET_DIR="${HERE}/lib/${PKG}"
