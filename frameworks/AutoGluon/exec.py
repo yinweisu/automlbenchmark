@@ -10,14 +10,19 @@ import matplotlib
 import pandas as pd
 matplotlib.use('agg')  # no need for tk
 
+from pip._internal.operations import freeze
+print(list(freeze.freeze()))
+
+log = logging.getLogger(__name__)
+
+log.warning(list(freeze.freeze()))
+
 from autogluon.tabular import TabularPrediction as task
 from autogluon.core.utils.savers import save_pd, save_pkl
 import autogluon.core.metrics as metrics
 from autogluon.tabular.version import __version__
 
 from frameworks.shared.callee import call_run, result, output_subdir, utils, save_metadata
-
-log = logging.getLogger(__name__)
 
 
 def run(dataset, config):
