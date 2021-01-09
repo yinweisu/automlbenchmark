@@ -23,7 +23,6 @@ fi
 PIP install --upgrade pip
 PIP install --upgrade setuptools
 PIP install "mxnet<2.0.0"
-PIP install "gluoncv==0.9.0"
 
 if [[ "$VERSION" == "stable" ]]; then
     PIP install --no-cache-dir -U ${PKG}
@@ -47,4 +46,6 @@ else
     PIP install -e text/
     PIP install -e vision/
     PIP install -e autogluon/
+
+    PIP install "gluoncv==0.9.0"
 fi
