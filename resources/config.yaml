@@ -1,5 +1,5 @@
 ---
-project_repository: https://github.com/openml/automlbenchmark#stable      # this is also the url used to clone the repository on ec2 instances
+project_repository: Innixma/automlbenchmark#ag-2021_02_04      # this is also the url used to clone the repository on ec2 instances
                                                                           # when running those without docker.
                                                                           # to clone a specific branch/tag, add a url fragment, e.g.:
                                                                           # https://github.com/openml/automlbenchmark#stable
