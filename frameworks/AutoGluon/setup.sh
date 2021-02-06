@@ -9,7 +9,7 @@ if [[ "$VERSION" == "latest" ]]; then
 fi
 # TODO: Hacked in until 0.1 releases
 if [[ "$VERSION" == "stable" ]]; then
-    VERSION="0.0.16b20210205"
+    VERSION="0.0.16b20210206"
 fi
 
 # creating local venv
@@ -30,6 +30,11 @@ elif [[ "$VERSION" =~ ^[0-9] ]]; then
     PIP install --no-cache-dir -U ${PKG}==${VERSION}
 else
 #    PIP install --no-cache-dir -e git+${REPO}@${VERSION}#egg={PKG}
+
+    # FIXME: HACK
+    VERSION="update_version_0.1.0"
+    # REPO="https://github.com/gradientsky/autogluon.git"
+
     TARGET_DIR="${HERE}/lib/${PKG}"
     rm -Rf ${TARGET_DIR}
     git clone --depth 1 --single-branch --branch ${VERSION} --recurse-submodules ${REPO} ${TARGET_DIR}
