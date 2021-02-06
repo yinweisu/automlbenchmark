@@ -9,7 +9,7 @@ if [[ "$VERSION" == "latest" ]]; then
 fi
 # TODO: Hacked in until 0.1 releases
 if [[ "$VERSION" == "stable" ]]; then
-    VERSION="0.0.16b20210204"
+    VERSION="0.0.16b20210205"
 fi
 
 # creating local venv
@@ -21,7 +21,7 @@ if [[ -x "$(command -v brew)" ]]; then
 fi
 
 PIP install --upgrade pip
-PIP install --upgrade setuptools
+PIP install --upgrade setuptools, wheel
 PIP install "mxnet<2.0.0"
 
 if [[ "$VERSION" == "stable" ]]; then
