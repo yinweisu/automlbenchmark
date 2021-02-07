@@ -16,6 +16,17 @@ AutoGluon_bestquality:
   params:
     presets: best_quality
 
+AutoGluon_raytune:
+  extends: AutoGluon
+  params:
+    hyperparameter_tune_kwargs: 'auto'
+
+AutoGluon_bestquality_raytune:
+  extends: AutoGluon
+  params:
+    presets: best_quality
+    hyperparameter_tune_kwargs: 'auto'
+
 autosklearn:
   version: 'latest'
 

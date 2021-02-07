@@ -32,8 +32,8 @@ else
 #    PIP install --no-cache-dir -e git+${REPO}@${VERSION}#egg={PKG}
 
     # FIXME: HACK
-    VERSION="update_version_0.1.0"
-    # REPO="https://github.com/gradientsky/autogluon.git"
+    VERSION="20210126_raytune"
+    REPO="https://github.com/gradientsky/autogluon.git"
 
     TARGET_DIR="${HERE}/lib/${PKG}"
     rm -Rf ${TARGET_DIR}
