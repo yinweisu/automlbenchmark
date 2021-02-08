@@ -21,7 +21,7 @@ if [[ -x "$(command -v brew)" ]]; then
 fi
 
 PIP install --upgrade pip
-PIP install --upgrade setuptools, wheel
+PIP install --upgrade setuptools wheel
 PIP install "mxnet<2.0.0"
 
 if [[ "$VERSION" == "stable" ]]; then
