@@ -9,7 +9,7 @@ if [[ "$VERSION" == "latest" ]]; then
 fi
 # TODO: Hacked in until 0.1 releases
 if [[ "$VERSION" == "stable" ]]; then
-    VERSION="0.0.16b20210206"
+    VERSION="0.0.16b20210211"
 fi
 
 # creating local venv
@@ -32,8 +32,8 @@ else
 #    PIP install --no-cache-dir -e git+${REPO}@${VERSION}#egg={PKG}
 
     # FIXME: HACK
-    VERSION="tabular_stopping_metric_opt"
-    # REPO="https://github.com/gradientsky/autogluon.git"
+    VERSION="20210211_seq_scheduler"
+    REPO="https://github.com/gradientsky/autogluon.git"
 
     TARGET_DIR="${HERE}/lib/${PKG}"
     rm -Rf ${TARGET_DIR}

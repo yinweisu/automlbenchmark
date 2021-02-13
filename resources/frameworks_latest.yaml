@@ -16,12 +16,12 @@ AutoGluon_bestquality:
   params:
     presets: best_quality
 
-AutoGluon_raytune:
+AutoGluon_hpo_auto:
   extends: AutoGluon
   params:
     hyperparameter_tune_kwargs: 'auto'
 
-AutoGluon_bestquality_raytune:
+AutoGluon_bestquality_hpo_auto:
   extends: AutoGluon
   params:
     presets: best_quality
