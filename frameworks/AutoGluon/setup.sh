@@ -22,6 +22,12 @@ fi
 
 PIP install --upgrade pip
 PIP install --upgrade setuptools wheel
+PIP install 'numpy==1.19.5'
+PIP install 'scipy==1.5.4'
+
+# ConfigSpace MUST be installed after correct cython and numpy installed
+# otherwise it will compile against the version in Conda (1.20.x)
+PIP install 'ConfigSpace==0.4.14' --no-binary :all:
 PIP install "mxnet<2.0.0"
 
 if [[ "$VERSION" == "stable" ]]; then
@@ -32,8 +38,8 @@ else
 #    PIP install --no-cache-dir -e git+${REPO}@${VERSION}#egg={PKG}
 
     # FIXME: HACK
-    VERSION="20210211_seq_scheduler"
-    REPO="https://github.com/gradientsky/autogluon.git"
+    VERSION="update_versions"
+    # REPO="https://github.com/gradientsky/autogluon.git"
 
     TARGET_DIR="${HERE}/lib/${PKG}"
     rm -Rf ${TARGET_DIR}
