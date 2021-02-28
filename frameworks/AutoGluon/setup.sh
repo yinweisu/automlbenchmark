@@ -9,7 +9,7 @@ if [[ "$VERSION" == "latest" ]]; then
 fi
 # TODO: Hacked in until 0.1 releases
 if [[ "$VERSION" == "stable" ]]; then
-    VERSION="0.0.16b20210227"
+    VERSION="0.0.16b20210228"
 fi
 
 # creating local venv
