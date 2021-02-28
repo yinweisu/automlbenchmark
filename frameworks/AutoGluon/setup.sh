@@ -9,7 +9,7 @@ if [[ "$VERSION" == "latest" ]]; then
 fi
 # TODO: Hacked in until 0.1 releases
 if [[ "$VERSION" == "stable" ]]; then
-    VERSION="0.0.16b20210226"
+    VERSION="0.0.16b20210227"
 fi
 
 # creating local venv
@@ -32,7 +32,7 @@ else
 #    PIP install --no-cache-dir -e git+${REPO}@${VERSION}#egg={PKG}
 
     # FIXME: HACK
-    VERSION="tabular_pos_class_improve_logging"
+    # VERSION="tabular_pos_class_improve_logging"
     # REPO="https://github.com/gradientsky/autogluon.git"
 
     TARGET_DIR="${HERE}/lib/${PKG}"
