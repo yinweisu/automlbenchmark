@@ -95,13 +95,14 @@ def run(dataset, config):
     with pd.option_context('display.max_rows', None, 'display.max_columns', None, 'display.width', 1000):
         print(leaderboard)
 
-    save_artifacts(predictor, leaderboard, config)
-
     num_models_trained = len(leaderboard)
     if predictor._trainer.model_best is not None:
         num_models_ensemble = len(predictor._trainer.get_minimum_model_set(predictor._trainer.model_best))
     else:
         num_models_ensemble = 1
+
+    save_artifacts(predictor, leaderboard, config)
+    shutil.rmtree(predictor.path, ignore_errors=True)
 
     return result(output_file=config.output_predictions_file,
                   predictions=predictions,
@@ -116,7 +117,7 @@ def run(dataset, config):
 
 
 def save_artifacts(predictor, leaderboard, config):
-    artifacts = config.framework_params.get('_save_artifacts', ['leaderboard'])
+    artifacts = config.framework_params.get('_save_artifacts', ['leaderboard', 'models', 'info'])
     try:
         if 'leaderboard' in artifacts:
             leaderboard_dir = output_subdir("leaderboard", config)
@@ -131,8 +132,6 @@ def save_artifacts(predictor, leaderboard, config):
             shutil.rmtree(os.path.join(predictor.path, "utils"), ignore_errors=True)
             models_dir = output_subdir("models", config)
             utils.zip_path(predictor.path, os.path.join(models_dir, "models.zip"))
-
-        shutil.rmtree(predictor.path, ignore_errors=True)
 
     except Exception:
         log.warning("Error when saving artifacts.", exc_info=True)
