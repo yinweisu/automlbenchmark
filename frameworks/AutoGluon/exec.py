@@ -3,6 +3,7 @@ import os
 import shutil
 import warnings
 import gc
+import tempfile
 from io import StringIO
 warnings.simplefilter("ignore")
 
@@ -59,12 +60,14 @@ def run(dataset, config):
     del dataset
     gc.collect()
 
-    output_dir = output_subdir("models", config)
+    tmpdir = tempfile.mkdtemp(dir='.')
+    models_dir = os.path.join(tmpdir, "models") + '/'  # passed to AG
+
     with utils.Timer() as training:
         predictor = TabularPredictor(
             label=label,
             eval_metric=perf_metric.name,
-            path=output_dir,
+            path=models_dir,
             problem_type=problem_type,
         ).fit(
             train_data=train,
@@ -115,11 +118,9 @@ def run(dataset, config):
 def save_artifacts(predictor, leaderboard, config):
     artifacts = config.framework_params.get('_save_artifacts', ['leaderboard'])
     try:
-        models_dir = output_subdir("models", config)
-        shutil.rmtree(os.path.join(models_dir, "utils"), ignore_errors=True)
-
         if 'leaderboard' in artifacts:
-            save_pd.save(path=os.path.join(models_dir, "leaderboard.csv"), df=leaderboard)
+            leaderboard_dir = output_subdir("leaderboard", config)
+            save_pd.save(path=os.path.join(leaderboard_dir, "leaderboard.csv"), df=leaderboard)
 
         if 'info' in artifacts:
             ag_info = predictor.info()
@@ -127,15 +128,16 @@ def save_artifacts(predictor, leaderboard, config):
             save_pkl.save(path=os.path.join(info_dir, "info.pkl"), object=ag_info)
 
         if 'models' in artifacts:
-            utils.zip_path(models_dir,
-                           os.path.join(models_dir, "models.zip"))
+            shutil.rmtree(os.path.join(predictor.path, "utils"), ignore_errors=True)
+            models_dir = output_subdir("models", config)
+            utils.zip_path(predictor.path, os.path.join(models_dir, "models.zip"))
 
         def delete(path, isdir):
             if isdir:
                 shutil.rmtree(path, ignore_errors=True)
             elif os.path.splitext(path)[1] == '.pkl':
                 os.remove(path)
-        utils.walk_apply(models_dir, delete, max_depth=0)
+        utils.walk_apply(predictor.path, delete, max_depth=0)
 
     except Exception:
         log.warning("Error when saving artifacts.", exc_info=True)
