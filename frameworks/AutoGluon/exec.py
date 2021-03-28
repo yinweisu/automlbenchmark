@@ -60,7 +60,7 @@ def run(dataset, config):
     del dataset
     gc.collect()
 
-    tmpdir = tempfile.mkdtemp(dir='.')
+    tmpdir = tempfile.mkdtemp()
     models_dir = tmpdir + os.sep  # passed to AG
 
     with utils.Timer() as training:
