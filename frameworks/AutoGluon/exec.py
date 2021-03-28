@@ -54,14 +54,13 @@ def run(dataset, config):
         column_names, _ = zip(*dataset.columns)
         column_types = dict(dataset.columns)
         train = pd.DataFrame(dataset.train.data, columns=column_names).astype(column_types, copy=False)
-        print(f"Columns dtypes:\n{train.dtypes}")
+        log.info(f"Columns dtypes:\n{train.dtypes}")
         test = pd.DataFrame(dataset.test.data, columns=column_names).astype(column_types, copy=False)
 
     del dataset
     gc.collect()
 
-    tmpdir = tempfile.mkdtemp()
-    models_dir = tmpdir + os.sep  # passed to AG
+    models_dir = tempfile.mkdtemp() + os.sep  # passed to AG
 
     with utils.Timer() as training:
         predictor = TabularPredictor(
@@ -91,8 +90,8 @@ def run(dataset, config):
 
     prob_labels = probabilities.columns.values.tolist() if probabilities is not None else None
 
-    _leaderboard_extra_info = config.framework_params.get('_leaderboard_extra_info', True)  # whether to get extra model info (very verbose)
-    _leaderboard_test = config.framework_params.get('_leaderboard_test', True)  # whether to compute test scores in leaderboard (expensive)
+    _leaderboard_extra_info = config.framework_params.get('_leaderboard_extra_info', False)  # whether to get extra model info (very verbose)
+    _leaderboard_test = config.framework_params.get('_leaderboard_test', False)  # whether to compute test scores in leaderboard (expensive)
     leaderboard_kwargs = dict(silent=True, extra_info=_leaderboard_extra_info)
     # Disabled leaderboard test data input by default to avoid long running computation, remove 7200s timeout limitation to re-enable
     if _leaderboard_test:
@@ -101,7 +100,7 @@ def run(dataset, config):
 
     leaderboard = predictor.leaderboard(**leaderboard_kwargs)
     with pd.option_context('display.max_rows', None, 'display.max_columns', None, 'display.width', 1000):
-        print(leaderboard)
+        log.info(leaderboard)
 
     num_models_trained = len(leaderboard)
     if predictor._trainer.model_best is not None:
