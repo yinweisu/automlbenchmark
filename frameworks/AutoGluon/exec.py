@@ -61,7 +61,7 @@ def run(dataset, config):
     gc.collect()
 
     tmpdir = tempfile.mkdtemp(dir='.')
-    models_dir = os.path.join(tmpdir, "models") + '/'  # passed to AG
+    models_dir = tmpdir + os.sep  # passed to AG
 
     with utils.Timer() as training:
         predictor = TabularPredictor(
@@ -132,12 +132,7 @@ def save_artifacts(predictor, leaderboard, config):
             models_dir = output_subdir("models", config)
             utils.zip_path(predictor.path, os.path.join(models_dir, "models.zip"))
 
-        def delete(path, isdir):
-            if isdir:
-                shutil.rmtree(path, ignore_errors=True)
-            elif os.path.splitext(path)[1] == '.pkl':
-                os.remove(path)
-        utils.walk_apply(predictor.path, delete, max_depth=0)
+        shutil.rmtree(predictor.path, ignore_errors=True)
 
     except Exception:
         log.warning("Error when saving artifacts.", exc_info=True)
