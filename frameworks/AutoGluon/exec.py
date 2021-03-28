@@ -91,7 +91,15 @@ def run(dataset, config):
 
     prob_labels = probabilities.columns.values.tolist() if probabilities is not None else None
 
-    leaderboard = predictor.leaderboard(silent=True)  # Removed test data input to avoid long running computation, remove 7200s timeout limitation to re-enable
+    _leaderboard_extra_info = config.framework_params.get('_leaderboard_extra_info', True)  # whether to get extra model info (very verbose)
+    _leaderboard_test = config.framework_params.get('_leaderboard_test', True)  # whether to compute test scores in leaderboard (expensive)
+    leaderboard_kwargs = dict(silent=True, extra_info=_leaderboard_extra_info)
+    # Disabled leaderboard test data input by default to avoid long running computation, remove 7200s timeout limitation to re-enable
+    if _leaderboard_test:
+        test[label] = y_test
+        leaderboard_kwargs['data'] = test
+
+    leaderboard = predictor.leaderboard(**leaderboard_kwargs)
     with pd.option_context('display.max_rows', None, 'display.max_columns', None, 'display.width', 1000):
         print(leaderboard)
 
@@ -117,7 +125,7 @@ def run(dataset, config):
 
 
 def save_artifacts(predictor, leaderboard, config):
-    artifacts = config.framework_params.get('_save_artifacts', ['leaderboard', 'models', 'info'])
+    artifacts = config.framework_params.get('_save_artifacts', ['leaderboard'])
     try:
         if 'leaderboard' in artifacts:
             leaderboard_dir = output_subdir("leaderboard", config)
