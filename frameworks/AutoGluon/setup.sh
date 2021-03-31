@@ -47,4 +47,7 @@ else
     PIP install -e text/
     PIP install -e vision/
     PIP install -e autogluon/
+
+    # FIXME: TEST
+    PIP install daal4py
 fi
