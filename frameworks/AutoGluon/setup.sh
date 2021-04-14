@@ -7,10 +7,6 @@ PKG=${4:-"autogluon"}
 if [[ "$VERSION" == "latest" ]]; then
     VERSION="master"
 fi
-# TODO: Hacked in until 0.1 releases
-if [[ "$VERSION" == "stable" ]]; then
-    VERSION="0.1.0"
-fi
 
 # creating local venv
 . ${HERE}/../shared/setup.sh ${HERE}
@@ -32,8 +28,8 @@ else
 #    PIP install --no-cache-dir -e git+${REPO}@${VERSION}#egg={PKG}
 
     # FIXME: HACK
-    VERSION="20210223_fastai2"
-    REPO="https://github.com/gradientsky/autogluon.git"
+    VERSION="tabular_reorder_fastai"
+    # REPO="https://github.com/gradientsky/autogluon.git"
 
     TARGET_DIR="${HERE}/lib/${PKG}"
     rm -Rf ${TARGET_DIR}
@@ -41,7 +37,7 @@ else
     cd ${TARGET_DIR}
     PIP install -e core/
     PIP install -e features/
-    PIP install -e tabular/[all]
+    PIP install -e tabular/[all,skex]
     PIP install -e mxnet/
     PIP install -e extra/
     PIP install -e text/
@@ -49,6 +45,3 @@ else
     PIP install -e autogluon/
 
 fi
-
-# FIXME: TEST
-PIP install daal4py
