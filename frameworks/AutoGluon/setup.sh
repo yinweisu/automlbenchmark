@@ -28,7 +28,7 @@ else
 #    PIP install --no-cache-dir -e git+${REPO}@${VERSION}#egg={PKG}
 
     # FIXME: HACK
-    VERSION="tabular_reorder_fastai"
+    VERSION="tabular_upgrade_cat"
     # REPO="https://github.com/gradientsky/autogluon.git"
 
     TARGET_DIR="${HERE}/lib/${PKG}"
