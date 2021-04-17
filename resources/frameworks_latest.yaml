@@ -10,6 +10,8 @@
 
 AutoGluon:
   version: "latest"
+  params:
+    _leaderboard_test: True
 
 AutoGluon_bestquality:
   extends: AutoGluon

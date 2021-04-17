@@ -25,6 +25,8 @@ AutoGluon:
     AutoGluon-Tabular succeeds by ensembling multiple models and stacking them in multiple layers.
   project: https://auto.gluon.ai
   refs: [https://arxiv.org/abs/2003.06505]
+  params:
+    _leaderboard_test: True
 #  params:
 #    _save_artifacts: ['leaderboard', 'models', 'info']
 
