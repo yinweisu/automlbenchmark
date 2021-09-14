@@ -14,6 +14,7 @@ import pandas as pd
 matplotlib.use('agg')  # no need for tk
 
 from autogluon.tabular import TabularPredictor
+from autogluon.core.models.ensemble.fold_fitting_strategy import SequentialLocalFoldFittingStrategy, ParallelLocalFoldFittingStrategy
 from autogluon.core.utils.savers import save_pd, save_pkl
 import autogluon.core.metrics as metrics
 from autogluon.tabular.version import __version__
@@ -45,6 +46,11 @@ def run(dataset, config):
 
     is_classification = config.type == 'classification'
     training_params = {k: v for k, v in config.framework_params.items() if not k.startswith('_')}
+    is_parallel = config.framework_params.get('_parallel', False)
+    if is_parallel:
+        training_params['ag_args_ensemble'] = dict(fold_fitting_strategy=ParallelLocalFoldFittingStrategy,)
+    else:
+        training_params['ag_args_ensemble'] = dict(fold_fitting_strategy=SequentialLocalFoldFittingStrategy,)
 
     train, test = dataset.train.path, dataset.test.path
     label = dataset.target.name

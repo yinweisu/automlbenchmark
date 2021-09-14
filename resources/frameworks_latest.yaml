@@ -19,6 +19,13 @@ AutoGluon_bestquality:
     presets: best_quality
     _leaderboard_test: True
 
+AutoGluon_bestquality_parallel:
+  extends: AutoGluon
+  params:
+    presets: best_quality
+    _parallel: True
+    _leaderboard_test: True
+
 AutoGluon_bestquality_prune:
   extends: AutoGluon
   params:
