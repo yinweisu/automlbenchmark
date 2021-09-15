@@ -151,7 +151,6 @@ aws:                    # configuration namespace for AWS mode.
       series: m6i                         #
       map:                               # map between num cores required and ec2 instance type sizes
         default: large
-        '1': small
         '2': large
         '4': xlarge
         '8': 2xlarge
