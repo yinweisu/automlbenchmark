@@ -17,12 +17,17 @@ AutoGluon_bestquality:
   extends: AutoGluon
   params:
     presets: best_quality
+    num_bag_sets: 1
+    num_bag_folds: 8
+    _parallel: False
     _leaderboard_test: True
 
 AutoGluon_bestquality_parallel:
   extends: AutoGluon
   params:
     presets: best_quality
+    num_bag_sets: 1
+    num_bag_folds: 8
     _parallel: True
     _leaderboard_test: True
 
