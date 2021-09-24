@@ -19,7 +19,7 @@ PIP install --upgrade pip
 PIP install --upgrade setuptools wheel
 PIP install "mxnet<2.0.0"
 PIP install "scikit-learn-intelex<2021.3"
-PIP install ray
+# PIP install ray
 
 if [[ "$VERSION" == "stable" ]]; then
     PIP install --no-cache-dir -U ${PKG}
