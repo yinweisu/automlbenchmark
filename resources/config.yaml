@@ -1,5 +1,5 @@
 ---
-project_repository: https://github.com/yinweisu/automlbenchmark#ag-2021_11_16_custom_dataset    # this is also the url used to clone the repository on ec2 instances
+project_repository: https://github.com/yinweisu/automlbenchmark#ag-custom_dataset-2021_11_16    # this is also the url used to clone the repository on ec2 instances
                                                                           # when running those without docker.
                                                                           # to clone a specific branch/tag, add a url fragment, e.g.:
                                                                           # https://github.com/openml/automlbenchmark#stable
