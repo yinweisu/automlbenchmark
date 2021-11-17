@@ -1,12 +1,6 @@
 - name: custom_adult
   dataset:
-    train: 
-      - 's3://automl-benchmark-weisy/ec2/custom_datasets/train_tiny.csv'
-      - 's3://automl-benchmark-weisy/ec2/custom_datasets/train_tiny.csv'
-      - 's3://automl-benchmark-weisy/ec2/custom_datasets/train_tiny.csv'
-    test: 
-      - 's3://automl-benchmark-weisy/ec2/custom_datasets/train_tiny.csv'
-      - 's3://automl-benchmark-weisy/ec2/custom_datasets/train_tiny.csv'
-      - 's3://automl-benchmark-weisy/ec2/custom_datasets/train_tiny.csv'
+    train: 's3://automl-benchmark-weisy/ec2/custom_datasets/train_tiny.csv'
+    test: 's3://automl-benchmark-weisy/ec2/custom_datasets/train_tiny.csv'
     # target: class
-  folds: 3
+  folds: 1
