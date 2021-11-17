@@ -1,0 +1,4 @@
+benchmarks:
+  definition_dir:  # this allows to add custom benchmark definitions (under {user}/benchmarks) to the default ones.
+    - '{user}/benchmarks'
+    - '{root}/resources/benchmarks'

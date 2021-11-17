@@ -1,0 +1,6 @@
+- name: custom_adult
+  dataset:
+    train: 's3://weisu-ag/cloud_predictor_data/train_tiny.csv'
+    test: 's3://weisu-ag/cloud_predictor_data/test_tiny.csv'
+    target: class
+  folds: 1
