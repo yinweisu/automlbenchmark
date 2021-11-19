@@ -15,6 +15,10 @@ if [[ -x "$(command -v brew)" ]]; then
     brew install libomp
 fi
 
+sudo apt-get update
+sudo apt install libquadmath0
+sudo apt-get install libopenblas-dev
+
 PIP install --upgrade pip
 PIP install --upgrade setuptools wheel
 # PIP install "mxnet<2.0.0"
