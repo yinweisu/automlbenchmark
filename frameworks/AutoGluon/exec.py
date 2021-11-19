@@ -50,6 +50,9 @@ def run(dataset, config):
         training_params['ag_args_ensemble'] = dict(fold_fitting_strategy='parallel_local',)
     else:
         training_params['ag_args_ensemble'] = dict(fold_fitting_strategy='sequential_local',)
+    
+    is_multimodal = config.framework_params.get('_multimodal', False)
+    training_params['hyperparameters'] = 'multimodal'
 
     train, test = dataset.train.path, dataset.test.path
     label = dataset.target.name

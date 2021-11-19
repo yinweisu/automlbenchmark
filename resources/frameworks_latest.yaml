@@ -21,6 +21,12 @@ AutoGluon_bestquality:
     _parallel: False
     _leaderboard_test: True
 
+AutoGluon_mm:
+  extends: AutoGluon
+  params:
+    _multimodal: True
+    _leaderboard_test: True
+
 AutoGluon_bestquality_parallel:
   extends: AutoGluon
   params:
