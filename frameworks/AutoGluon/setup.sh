@@ -17,7 +17,8 @@ fi
 
 PIP install --upgrade pip
 PIP install --upgrade setuptools wheel
-PIP install "mxnet<2.0.0"
+# PIP install "mxnet<2.0.0"
+PIP install "mxnet-cu110==1.8.0"
 PIP install "scikit-learn-intelex<2021.3"
 PIP install ray
 
