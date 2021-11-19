@@ -136,8 +136,8 @@ aws:                    # configuration namespace for AWS mode.
   ec2:
     regions:                             #
       us-east-1:
-        ami: ami-0ac019f4fcb7cb7e6
-        description: Ubuntu Server 18.04 LTS (HVM), EBS General Purpose (SSD) VolumeType
+        ami: ami-000377b9b6bb5f75d
+        description: Deep Learning Base AMI (Ubuntu 18.04) Version 45.0
       us-west-1:
         ami: ami-063aa838bd7631e0b
         description: Ubuntu Server 18.04 LTS (HVM), EBS General Purpose (SSD) VolumeType
