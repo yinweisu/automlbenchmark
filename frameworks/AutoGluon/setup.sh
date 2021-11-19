@@ -15,14 +15,17 @@ if [[ -x "$(command -v brew)" ]]; then
     brew install libomp
 fi
 
+# install ncll
+sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
+sudo add-apt-repository "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /"
 sudo apt-get update
+sudo apt install libnccl2
+# install mxnet dependency
 sudo apt install libquadmath0
-sudo apt-get install libopenblas-dev
 
 PIP install --upgrade pip
 PIP install --upgrade setuptools wheel
-# PIP install "mxnet<2.0.0"
-PIP install "mxnet-cu110==1.8.0"
+PIP install "mxnet-cu110<2.0.0"
 PIP install "scikit-learn-intelex<2021.3"
 PIP install ray
 
