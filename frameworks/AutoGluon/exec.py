@@ -13,8 +13,9 @@ import matplotlib
 import pandas as pd
 matplotlib.use('agg')  # no need for tk
 
-from autogluon.tabular import TabularPredictor
+from autogluon.tabular import TabularPredictor, FeatureMetadata
 from autogluon.core.utils.savers import save_pd, save_pkl
+from autogluon.core.utils.loaders import load_zip
 import autogluon.core.metrics as metrics
 from autogluon.tabular.version import __version__
 
@@ -26,7 +27,7 @@ log = logging.getLogger(__name__)
 
 def run(dataset, config):
     log.info(f"\n**** AutoGluon [v{__version__}] ****\n")
-
+    
     metrics_mapping = dict(
         acc=metrics.accuracy,
         auc=metrics.roc_auc,
@@ -60,6 +61,14 @@ def run(dataset, config):
     problem_type = dataset.problem_type
 
     models_dir = tempfile.mkdtemp() + os.sep  # passed to AG
+
+    if 'train_aux' in dataset:
+        log.info(f"Auxilary data found at {dataset.train_aux}")
+        load_zip(dataset.train_aux.path, unzip_dir='.')
+        image_col = 'image_path'
+        feature_metadata = FeatureMetadata.from_df(train)
+        feature_metadata = feature_metadata.add_special_types({image_col: ['image_path']})
+        training_params['feature_metadata'] = feature_metadata
 
     with Timer() as training:
         predictor = TabularPredictor(

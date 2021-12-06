@@ -50,6 +50,12 @@ AutoGluon_gq:
     presets: good_quality_faster_inference_only_refit
     _leaderboard_test: True
 
+AutoGluon_mm:
+  extends: AutoGluon
+  params:
+    _multimodal: True
+    _leaderboard_test: True
+
 autosklearn:
   version: 'stable'
   description: |
