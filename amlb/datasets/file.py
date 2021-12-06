@@ -60,6 +60,9 @@ class FileLoader:
         auxilary_data = auxilary_data if isinstance(auxilary_data, ns) else ns(path=auxilary_data)
         log.debug("Loading auxilary data %s", auxilary_data)
         paths = self._extract_auxilary_paths(auxilary_data.path if 'path' in auxilary_data else auxilary_data, fold=fold)
+        train_path = paths['train'][fold]
+        test_path = paths['test'][fold]
+        paths = dict(train=train_path, test=test_path)
         return paths
 
     def _extract_auxilary_paths(self, auxilary_data, fold=None):

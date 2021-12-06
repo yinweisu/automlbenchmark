@@ -13,9 +13,9 @@ import matplotlib
 import pandas as pd
 matplotlib.use('agg')  # no need for tk
 
-from autogluon.tabular import TabularPredictor, FeatureMetadata
+from autogluon.tabular import TabularPredictor, TabularDataset, FeatureMetadata
 from autogluon.core.utils.savers import save_pd, save_pkl
-from autogluon.core.utils.loaders import load_zip
+import zipfile
 import autogluon.core.metrics as metrics
 from autogluon.tabular.version import __version__
 
@@ -64,9 +64,11 @@ def run(dataset, config):
 
     if 'train_aux' in dataset:
         log.info(f"Auxilary data found at {dataset.train_aux}")
-        load_zip.unzip(dataset.train_aux.path, unzip_dir='.')
+        with zipfile.ZipFile(dataset.train_aux.path, 'r') as zip_ref:
+            zip_ref.extractall('.')
         image_col = 'image_path'
-        feature_metadata = FeatureMetadata.from_df(train)
+        train_data = TabularDataset(train)
+        feature_metadata = FeatureMetadata.from_df(train_data)
         feature_metadata = feature_metadata.add_special_types({image_col: ['image_path']})
         training_params['feature_metadata'] = feature_metadata
 
