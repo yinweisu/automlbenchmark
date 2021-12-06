@@ -64,7 +64,7 @@ def run(dataset, config):
 
     if 'train_aux' in dataset:
         log.info(f"Auxilary data found at {dataset.train_aux}")
-        load_zip(dataset.train_aux.path, unzip_dir='.')
+        load_zip.unzip(dataset.train_aux.path, unzip_dir='.')
         image_col = 'image_path'
         feature_metadata = FeatureMetadata.from_df(train)
         feature_metadata = feature_metadata.add_special_types({image_col: ['image_path']})
