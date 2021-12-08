@@ -2,242 +2,359 @@
   folds: 1
   dataset:
     target: label
-    train: s3://automl-datasets-ag/cpp_benchmark/7f4b2b42-bad6-466e-a50d-3fe788adb548/train.csv
-    test: s3://automl-datasets-ag/cpp_benchmark/7f4b2b42-bad6-466e-a50d-3fe788adb548/testLabel.csv
-  auxilary_data:
+    train: s3://automl-datasets-ag/cpp_benchmark_with_image/7f4b2b42-bad6-466e-a50d-3fe788adb548/train.csv
+    test: s3://automl-datasets-ag/cpp_benchmark_with_image/7f4b2b42-bad6-466e-a50d-3fe788adb548/test.csv
+  auxiliary_data:
     train: 's3://automl-datasets-ag/public2_with_image.zip'
     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: 2cbd9a22-0da1-404d-a7ba-49911840a622
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/2cbd9a22-0da1-404d-a7ba-49911840a622/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/2cbd9a22-0da1-404d-a7ba-49911840a622/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/2cbd9a22-0da1-404d-a7ba-49911840a622/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/2cbd9a22-0da1-404d-a7ba-49911840a622/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: 26bdceaf-13ca-4c9e-a7b3-14b98f7a35fc
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/26bdceaf-13ca-4c9e-a7b3-14b98f7a35fc/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/26bdceaf-13ca-4c9e-a7b3-14b98f7a35fc/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/26bdceaf-13ca-4c9e-a7b3-14b98f7a35fc/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/26bdceaf-13ca-4c9e-a7b3-14b98f7a35fc/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: 301ffda6-0e0f-490b-b754-d65ec3c746d7
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/301ffda6-0e0f-490b-b754-d65ec3c746d7/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/301ffda6-0e0f-490b-b754-d65ec3c746d7/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/301ffda6-0e0f-490b-b754-d65ec3c746d7/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/301ffda6-0e0f-490b-b754-d65ec3c746d7/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: d78ddbd7-e318-47bc-8027-4b7abab44fc6
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/d78ddbd7-e318-47bc-8027-4b7abab44fc6/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/d78ddbd7-e318-47bc-8027-4b7abab44fc6/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/d78ddbd7-e318-47bc-8027-4b7abab44fc6/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/d78ddbd7-e318-47bc-8027-4b7abab44fc6/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: cd66380b-89a6-49b0-880b-518ade8a4a51
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/cd66380b-89a6-49b0-880b-518ade8a4a51/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/cd66380b-89a6-49b0-880b-518ade8a4a51/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/cd66380b-89a6-49b0-880b-518ade8a4a51/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/cd66380b-89a6-49b0-880b-518ade8a4a51/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: f6bc99dd-4c24-4280-9cab-880a32496e96
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/f6bc99dd-4c24-4280-9cab-880a32496e96/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/f6bc99dd-4c24-4280-9cab-880a32496e96/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/f6bc99dd-4c24-4280-9cab-880a32496e96/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/f6bc99dd-4c24-4280-9cab-880a32496e96/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: 5d1e3461-8b01-463c-a9db-2e4c48db1467
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/5d1e3461-8b01-463c-a9db-2e4c48db1467/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/5d1e3461-8b01-463c-a9db-2e4c48db1467/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/5d1e3461-8b01-463c-a9db-2e4c48db1467/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/5d1e3461-8b01-463c-a9db-2e4c48db1467/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: 3cf28e5f-886a-4ace-bebf-299e1dbde654
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/3cf28e5f-886a-4ace-bebf-299e1dbde654/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/3cf28e5f-886a-4ace-bebf-299e1dbde654/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/3cf28e5f-886a-4ace-bebf-299e1dbde654/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/3cf28e5f-886a-4ace-bebf-299e1dbde654/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: 63ba041b-7a5e-44c3-98ba-3bd85af97023
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/63ba041b-7a5e-44c3-98ba-3bd85af97023/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/63ba041b-7a5e-44c3-98ba-3bd85af97023/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/63ba041b-7a5e-44c3-98ba-3bd85af97023/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/63ba041b-7a5e-44c3-98ba-3bd85af97023/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: a20ad8bf-826a-443a-8b4e-c13959b3d0ac
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/a20ad8bf-826a-443a-8b4e-c13959b3d0ac/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/a20ad8bf-826a-443a-8b4e-c13959b3d0ac/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/a20ad8bf-826a-443a-8b4e-c13959b3d0ac/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/a20ad8bf-826a-443a-8b4e-c13959b3d0ac/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: d1e634cb-a95d-49be-9cbf-847641cc3fef
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/d1e634cb-a95d-49be-9cbf-847641cc3fef/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/d1e634cb-a95d-49be-9cbf-847641cc3fef/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/d1e634cb-a95d-49be-9cbf-847641cc3fef/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/d1e634cb-a95d-49be-9cbf-847641cc3fef/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: e6ce6a39-cf8f-41f6-a204-f66e85048d70
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/e6ce6a39-cf8f-41f6-a204-f66e85048d70/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/e6ce6a39-cf8f-41f6-a204-f66e85048d70/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/e6ce6a39-cf8f-41f6-a204-f66e85048d70/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/e6ce6a39-cf8f-41f6-a204-f66e85048d70/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: bed07e1c-7cc6-4308-a61b-ad897ca22914
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/bed07e1c-7cc6-4308-a61b-ad897ca22914/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/bed07e1c-7cc6-4308-a61b-ad897ca22914/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/bed07e1c-7cc6-4308-a61b-ad897ca22914/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/bed07e1c-7cc6-4308-a61b-ad897ca22914/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: 5dd9c260-0c74-4ae8-9047-0ee12f617ec2
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/5dd9c260-0c74-4ae8-9047-0ee12f617ec2/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/5dd9c260-0c74-4ae8-9047-0ee12f617ec2/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/5dd9c260-0c74-4ae8-9047-0ee12f617ec2/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/5dd9c260-0c74-4ae8-9047-0ee12f617ec2/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: b01d638d-fa43-4309-ac12-77600be26f52
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/b01d638d-fa43-4309-ac12-77600be26f52/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/b01d638d-fa43-4309-ac12-77600be26f52/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/b01d638d-fa43-4309-ac12-77600be26f52/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/b01d638d-fa43-4309-ac12-77600be26f52/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: 5729f07d-8d43-463d-894b-7dfa2da63efb
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/5729f07d-8d43-463d-894b-7dfa2da63efb/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/5729f07d-8d43-463d-894b-7dfa2da63efb/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/5729f07d-8d43-463d-894b-7dfa2da63efb/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/5729f07d-8d43-463d-894b-7dfa2da63efb/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: fe0bd313-0a49-4237-b47a-869ceb607edd
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/fe0bd313-0a49-4237-b47a-869ceb607edd/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/fe0bd313-0a49-4237-b47a-869ceb607edd/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/fe0bd313-0a49-4237-b47a-869ceb607edd/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/fe0bd313-0a49-4237-b47a-869ceb607edd/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: fbf81f0d-8e65-40f5-8c66-0146d61a5bfb
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/fbf81f0d-8e65-40f5-8c66-0146d61a5bfb/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/fbf81f0d-8e65-40f5-8c66-0146d61a5bfb/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/fbf81f0d-8e65-40f5-8c66-0146d61a5bfb/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/fbf81f0d-8e65-40f5-8c66-0146d61a5bfb/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: d18a4dd1-2936-4a53-8065-a1f4763f6fed
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/d18a4dd1-2936-4a53-8065-a1f4763f6fed/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/d18a4dd1-2936-4a53-8065-a1f4763f6fed/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/d18a4dd1-2936-4a53-8065-a1f4763f6fed/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/d18a4dd1-2936-4a53-8065-a1f4763f6fed/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: e032164f-47d3-4286-ab82-569b47727551
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/e032164f-47d3-4286-ab82-569b47727551/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/e032164f-47d3-4286-ab82-569b47727551/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/e032164f-47d3-4286-ab82-569b47727551/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/e032164f-47d3-4286-ab82-569b47727551/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: 7cd3b257-c196-457f-bb0d-969a3df71b12
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/7cd3b257-c196-457f-bb0d-969a3df71b12/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/7cd3b257-c196-457f-bb0d-969a3df71b12/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/7cd3b257-c196-457f-bb0d-969a3df71b12/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/7cd3b257-c196-457f-bb0d-969a3df71b12/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: 49038368-f541-4cea-9ab5-474ca571e60c
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/49038368-f541-4cea-9ab5-474ca571e60c/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/49038368-f541-4cea-9ab5-474ca571e60c/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/49038368-f541-4cea-9ab5-474ca571e60c/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/49038368-f541-4cea-9ab5-474ca571e60c/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: ebe8c075-6841-4ecc-ab64-c94450982286
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/ebe8c075-6841-4ecc-ab64-c94450982286/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/ebe8c075-6841-4ecc-ab64-c94450982286/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/ebe8c075-6841-4ecc-ab64-c94450982286/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/ebe8c075-6841-4ecc-ab64-c94450982286/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: 3d18592b-8bc4-4049-8c3e-91c4615eb629
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/3d18592b-8bc4-4049-8c3e-91c4615eb629/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/3d18592b-8bc4-4049-8c3e-91c4615eb629/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/3d18592b-8bc4-4049-8c3e-91c4615eb629/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/3d18592b-8bc4-4049-8c3e-91c4615eb629/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: 0c1b989f-26bc-49c3-832b-0ec1e4b148b1
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/0c1b989f-26bc-49c3-832b-0ec1e4b148b1/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/0c1b989f-26bc-49c3-832b-0ec1e4b148b1/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/0c1b989f-26bc-49c3-832b-0ec1e4b148b1/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/0c1b989f-26bc-49c3-832b-0ec1e4b148b1/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: 1db99236-0601-4e03-b8bb-96b5eb236d74
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/1db99236-0601-4e03-b8bb-96b5eb236d74/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/1db99236-0601-4e03-b8bb-96b5eb236d74/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/1db99236-0601-4e03-b8bb-96b5eb236d74/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/1db99236-0601-4e03-b8bb-96b5eb236d74/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: 55bd4653-ef64-419c-ae62-7442d3ea026e
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/55bd4653-ef64-419c-ae62-7442d3ea026e/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/55bd4653-ef64-419c-ae62-7442d3ea026e/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/55bd4653-ef64-419c-ae62-7442d3ea026e/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/55bd4653-ef64-419c-ae62-7442d3ea026e/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: 4dbb8031-56a6-43bf-9e03-40ea2affa163
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/4dbb8031-56a6-43bf-9e03-40ea2affa163/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/4dbb8031-56a6-43bf-9e03-40ea2affa163/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/4dbb8031-56a6-43bf-9e03-40ea2affa163/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/4dbb8031-56a6-43bf-9e03-40ea2affa163/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: 903d20ba-0f94-49f7-a241-fda8cea0c037
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/903d20ba-0f94-49f7-a241-fda8cea0c037/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/903d20ba-0f94-49f7-a241-fda8cea0c037/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/903d20ba-0f94-49f7-a241-fda8cea0c037/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/903d20ba-0f94-49f7-a241-fda8cea0c037/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: 20e6e8e8-a4da-4fea-a9de-c784cdf84c1f
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/20e6e8e8-a4da-4fea-a9de-c784cdf84c1f/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/20e6e8e8-a4da-4fea-a9de-c784cdf84c1f/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/20e6e8e8-a4da-4fea-a9de-c784cdf84c1f/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/20e6e8e8-a4da-4fea-a9de-c784cdf84c1f/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: a99f1661-a731-4d3a-82e1-3f2493dfe9d2
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/a99f1661-a731-4d3a-82e1-3f2493dfe9d2/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/a99f1661-a731-4d3a-82e1-3f2493dfe9d2/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/a99f1661-a731-4d3a-82e1-3f2493dfe9d2/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/a99f1661-a731-4d3a-82e1-3f2493dfe9d2/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: 65e90889-4e9c-40ea-8eed-1b73bdc584c1
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/65e90889-4e9c-40ea-8eed-1b73bdc584c1/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/65e90889-4e9c-40ea-8eed-1b73bdc584c1/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/65e90889-4e9c-40ea-8eed-1b73bdc584c1/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/65e90889-4e9c-40ea-8eed-1b73bdc584c1/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: afcde1bc-a4a6-49b0-9f9d-3b65f684cb84
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/afcde1bc-a4a6-49b0-9f9d-3b65f684cb84/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/afcde1bc-a4a6-49b0-9f9d-3b65f684cb84/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/afcde1bc-a4a6-49b0-9f9d-3b65f684cb84/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/afcde1bc-a4a6-49b0-9f9d-3b65f684cb84/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: f5a2d062-0970-4341-8c79-c0e784f0fce7
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/f5a2d062-0970-4341-8c79-c0e784f0fce7/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/f5a2d062-0970-4341-8c79-c0e784f0fce7/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/f5a2d062-0970-4341-8c79-c0e784f0fce7/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/f5a2d062-0970-4341-8c79-c0e784f0fce7/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: ee8a2fa5-cbd2-4048-9013-2203ff9aa2e3
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/ee8a2fa5-cbd2-4048-9013-2203ff9aa2e3/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/ee8a2fa5-cbd2-4048-9013-2203ff9aa2e3/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/ee8a2fa5-cbd2-4048-9013-2203ff9aa2e3/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/ee8a2fa5-cbd2-4048-9013-2203ff9aa2e3/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: 0bce3a69-0527-486b-ad4e-ab66d67026bc
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/0bce3a69-0527-486b-ad4e-ab66d67026bc/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/0bce3a69-0527-486b-ad4e-ab66d67026bc/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/0bce3a69-0527-486b-ad4e-ab66d67026bc/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/0bce3a69-0527-486b-ad4e-ab66d67026bc/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: ef99cbf2-d51d-4456-b3b1-6388b06aab78
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/ef99cbf2-d51d-4456-b3b1-6388b06aab78/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/ef99cbf2-d51d-4456-b3b1-6388b06aab78/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/ef99cbf2-d51d-4456-b3b1-6388b06aab78/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/ef99cbf2-d51d-4456-b3b1-6388b06aab78/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: 60c60200-2341-427d-b0ec-2fc30c4bfdd8
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/60c60200-2341-427d-b0ec-2fc30c4bfdd8/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/60c60200-2341-427d-b0ec-2fc30c4bfdd8/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/60c60200-2341-427d-b0ec-2fc30c4bfdd8/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/60c60200-2341-427d-b0ec-2fc30c4bfdd8/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'
 # - name: 8e2c12e3-ef20-4a18-a063-e94a91b6efeb
 #   folds: 1
 #   dataset:
 #     target: label
-#     train: s3://automl-datasets-ag/cpp_benchmark/8e2c12e3-ef20-4a18-a063-e94a91b6efeb/train.csv
-#     test: s3://automl-datasets-ag/cpp_benchmark/8e2c12e3-ef20-4a18-a063-e94a91b6efeb/testLabel.csv
+#     train: s3://automl-datasets-ag/cpp_benchmark_with_image/8e2c12e3-ef20-4a18-a063-e94a91b6efeb/train.csv
+#     test: s3://automl-datasets-ag/cpp_benchmark_with_image/8e2c12e3-ef20-4a18-a063-e94a91b6efeb/test.csv
+#   auxiliary_data:
+#     train: 's3://automl-datasets-ag/public2_with_image.zip'
+#     test: 's3://automl-datasets-ag/public2_with_image.zip'

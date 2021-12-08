@@ -69,7 +69,7 @@ class FileLoader:
         train_search_pat = re.compile(r"(?:(.*)[_-])train_auxilary(?:[_-](\d+))?\.\w+")
         test_search_pat = re.compile(r"(?:(.*)[_-])test_auxilary(?:[_-](\d+))?\.\w+")
         if isinstance(auxilary_data, (tuple, list)):
-            assert len(auxilary_data) % 2 == 0, "auxilary data list must contain an even number of paths: [train_0, test_0, train_1, test_1, ...]."
+            assert len(auxilary_data) % 2 == 0, "auxilary data list must contain an even number of paths: [train_auxilary_0, test_auxilary_0, train_auxilary_1, test_auxilary_1, ...]."
             return self._extract_auxilary_paths(ns(train=[p for i, p in enumerate(auxilary_data) if i % 2 == 0],
                                                    test=[p for i, p in enumerate(auxilary_data) if i % 2 == 1]),
                                                 fold=fold)
@@ -103,7 +103,7 @@ class FileLoader:
                 # verify they're for the same dataset (just based on name)
                 assert train_matches, f"Folder {auxilary_data} must contain at least one training auxilary data."
                 root_names = {m[1] for m in (train_matches+test_matches)}
-                assert len(root_names) == 1, f"All dataset files in {auxilary_data} should follow the same naming: xxxxx_train_N.ext or xxxxx_test_N.ext with N starting from 0."
+                assert len(root_names) == 1, f"All dataset files in {auxilary_data} should follow the same naming: xxxxx_train_auxilary_N.ext or xxxxx_test_auxilary_N.ext with N starting from 0."
 
                 train_no_fold = next((m[0] for m in train_matches if m[2] is None), None)
                 test_no_fold = next((m[0] for m in test_matches if m[2] is None), None)
@@ -121,7 +121,7 @@ class FileLoader:
                         fold += 1
                     else:
                         fold = -1
-                assert len(paths) > 0, f"No dataset file found in {auxilary_data}: they should follow the naming xxxx_train.ext, xxxx_test.ext or xxxx_train_0.ext, xxxx_test_0.ext, xxxx_train_1.ext, ..."
+                assert len(paths) > 0, f"No dataset file found in {auxilary_data}: they should follow the naming xxxx_train_auxilary.ext, xxxx_test_auxilary.ext or xxxx_train_0_auxilary.ext, xxxx_test_0_auxilary.ext, xxxx_train_1_auxilary.ext, ..."
                 return paths
         elif is_valid_url(auxilary_data):
             cached_file = os.path.join(self._cache_dir, os.path.basename(auxilary_data))
@@ -449,7 +449,8 @@ class CsvDatasplit(FileDatasplit):
                 self._ds = df
                 self.dataset._dtypes = self._ds.dtypes
             else:
-                self._ds = read_csv(self.path, dtype=self.dataset._dtypes.to_dict())
+                # self._ds = read_csv(self.path, dtype=self.dataset._dtypes.to_dict())
+                self._ds = read_csv(self.path)
 
     @profile(logger=log)
     def load_metadata(self):
