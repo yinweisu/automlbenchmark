@@ -34,11 +34,10 @@ else
     rm -Rf ${TARGET_DIR}
     git clone --depth 1 --single-branch --branch ${VERSION} --recurse-submodules ${REPO} ${TARGET_DIR}
     cd ${TARGET_DIR}
-    PIP install -e core/
+    PIP install -e common/
     PIP install -e features/
+    PIP install -e core/[all]
     PIP install -e tabular/[all]
-    PIP install -e mxnet/
-    PIP install -e extra/
     PIP install -e text/
     PIP install -e vision/
     PIP install -e autogluon/
