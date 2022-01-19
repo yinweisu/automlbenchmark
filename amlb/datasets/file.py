@@ -443,8 +443,8 @@ class CsvDatasplit(FileDatasplit):
                                   for name, dtype in zip(df.dtypes.index, df.dtypes.values)
                                   if pat.is_string_dtype(dtype) or pat.is_object_dtype(dtype)}
                 # we could be a bit more clever in the future and convert 'string' to category iff len(distinct values) << nrows
-                if dt_conversions:
-                    df = df.astype(dt_conversions, copy=False)
+                # if dt_conversions:
+                #     df = df.astype(dt_conversions, copy=False)
 
                 self._ds = df
                 self.dataset._dtypes = self._ds.dtypes

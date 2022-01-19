@@ -67,14 +67,13 @@ def run(dataset, config):
 
     if 'train_auxilary_data' in dataset:
         log.info(f"Auxilary data found at {dataset.train_auxilary_data}")
-        os.environ['AUTOGLUON_TEXT_TRAIN_WITHOUT_GPU']='1'
         with zipfile.ZipFile(dataset.train_auxilary_data.path, 'r') as zip_ref:
             zip_ref.extractall('.')
         image_col = 'image_path'
         train_data = TabularDataset(train)
-        category_columns = train_data.select_dtypes(include=['category']).columns
-        train_data[category_columns] = train_data[category_columns].astype('object')
-        log.info(train_data.dtypes)
+        # category_columns = train_data.select_dtypes(include=['category']).columns
+        # train_data[category_columns] = train_data[category_columns].astype('object')
+        # log.info(train_data.dtypes)
         feature_metadata = FeatureMetadata.from_df(train_data)
         feature_metadata = feature_metadata.add_special_types({image_col: ['image_path']})
         training_params['feature_metadata'] = feature_metadata
