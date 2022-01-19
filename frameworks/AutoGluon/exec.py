@@ -65,10 +65,10 @@ def run(dataset, config):
 
     models_dir = tempfile.mkdtemp() + os.sep  # passed to AG
 
-    if 'train_aux' in dataset:
-        log.info(f"Auxilary data found at {dataset.train_aux}")
+    if 'train_auxilary_data' in dataset:
+        log.info(f"Auxilary data found at {dataset.train_auxilary_data}")
         os.environ['AUTOGLUON_TEXT_TRAIN_WITHOUT_GPU']='1'
-        with zipfile.ZipFile(dataset.train_aux.path, 'r') as zip_ref:
+        with zipfile.ZipFile(dataset.train_auxilary_data.path, 'r') as zip_ref:
             zip_ref.extractall('.')
         image_col = 'image_path'
         train_data = TabularDataset(train)
