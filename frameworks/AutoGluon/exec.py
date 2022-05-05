@@ -50,6 +50,12 @@ def run(dataset, config):
         training_params['ag_args_ensemble'] = dict(fold_fitting_strategy='parallel_local',)
     else:
         training_params['ag_args_ensemble'] = dict(fold_fitting_strategy='sequential_local',)
+    is_hpo = config.framework_params.get('_hpo', False)
+    if is_hpo:
+        training_params['hyperparameter_tune_kwargs'] = {
+            'searcher': 'random',
+            'scheduler': 'local'
+        }
 
     train, test = dataset.train.path, dataset.test.path
     label = dataset.target.name

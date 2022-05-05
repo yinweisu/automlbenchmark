@@ -15,6 +15,17 @@ AutoGluon_bestquality:
   params:
     presets: best_quality
 
+AutoGluon_hpo:
+  extends: AutoGluon
+  params:
+    _hpo: True
+
+AutoGluon_hpo_bestquality:
+  extends: AutoGluon
+  params:
+    presets: best_quality
+    _hpo: True
+
 autosklearn:
   version: 'stable'
 
