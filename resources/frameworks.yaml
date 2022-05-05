@@ -30,6 +30,17 @@ AutoGluon:
 #  params:
 #    _save_artifacts: ['leaderboard', 'models', 'info']
 
+AutoGluon_hpo:
+  extends: AutoGluon
+  params:
+    _hpo: True
+
+AutoGluon_hpo_bestquality:
+  extends: AutoGluon
+  params:
+    presets: best_quality
+    _hpo: True
+
 AutoGluon_bestquality:
   extends: AutoGluon
   description: |
