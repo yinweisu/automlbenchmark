@@ -13,6 +13,30 @@ AutoGluon:
   params:
     _leaderboard_test: True
 
+AutoGluon_hpo:
+  extends: AutoGluon
+  params:
+    _hpo: True
+
+AutoGluon_hpo_bestquality:
+  extends: AutoGluon
+  params:
+    presets: best_quality
+    _hpo: True
+    _bayes: True
+
+AutoGluon_hpo_bayes:
+  extends: AutoGluon
+  params:
+    _hpo: True
+    _bayes: True
+
+AutoGluon_hpo_bestquality_bayes:
+  extends: AutoGluon
+  params:
+    presets: best_quality
+    _hpo: True
+
 AutoGluon_bestquality:
   extends: AutoGluon
   params:
