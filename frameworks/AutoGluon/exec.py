@@ -59,8 +59,8 @@ def run(dataset, config):
         }
     if is_bayes:
         training_params['hyperparameter_tune_kwargs'] = {
-            'searcher': 'random',
-            'scheduler': 'bayes'
+            'searcher': 'bayes',
+            'scheduler': 'FIFO'
         }
 
     train, test = dataset.train.path, dataset.test.path
