@@ -52,16 +52,25 @@ def run(dataset, config):
         training_params['ag_args_ensemble'] = dict(fold_fitting_strategy='sequential_local',)
     is_hpo = config.framework_params.get('_hpo', False)
     is_bayes = config.framework_params.get('_bayes', False)
+    is_fork = config.framework_params.get('_fork', False)
     if is_hpo:
         training_params['hyperparameter_tune_kwargs'] = {
-            'searcher': 'random',
-            'scheduler': 'FIFO'
+            'searcher': 'auto',
+            'scheduler': 'local',
+            'num_trials': 32,
         }
-    if is_bayes:
-        training_params['hyperparameter_tune_kwargs'] = {
-            'searcher': 'bayes',
-            'scheduler': 'FIFO'
-        }
+        if is_fork:
+            training_params['hyperparameter_tune_kwargs'] = {
+                'searcher': 'random',
+                'scheduler': 'FIFO',
+                'num_trials': 32,
+            }
+        if is_bayes:
+            training_params['hyperparameter_tune_kwargs'] = {
+                'searcher': 'bayes',
+                'scheduler': 'FIFO',
+                'num_trials': 32,
+            }
 
     train, test = dataset.train.path, dataset.test.path
     label = dataset.target.name

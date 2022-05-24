@@ -17,6 +17,7 @@ AutoGluon_hpo:
   extends: AutoGluon
   params:
     _hpo: True
+    _fork: True
 
 AutoGluon_hpo_bestquality:
   extends: AutoGluon
@@ -24,18 +25,21 @@ AutoGluon_hpo_bestquality:
     presets: best_quality
     _hpo: True
     _bayes: True
+    _fork: True
 
 AutoGluon_hpo_bayes:
   extends: AutoGluon
   params:
     _hpo: True
     _bayes: True
+    _fork: True
 
 AutoGluon_hpo_bestquality_bayes:
   extends: AutoGluon
   params:
     presets: best_quality
     _hpo: True
+    _fork: True
 
 AutoGluon_bestquality:
   extends: AutoGluon
