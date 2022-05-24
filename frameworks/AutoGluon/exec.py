@@ -86,7 +86,7 @@ def run(dataset, config):
             problem_type=problem_type,
         ).fit(
             train_data=train,
-            time_limit=config.max_runtime_seconds,
+            # time_limit=config.max_runtime_seconds,
             **training_params
         )
 
