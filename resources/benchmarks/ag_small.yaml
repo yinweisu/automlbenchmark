@@ -3,8 +3,8 @@
 - name: yeast
   openml_task_id: 2073
 
-- name: amazon-commerce-reviews
-  openml_task_id: 10090
+# - name: amazon-commerce-reviews
+#   openml_task_id: 10090
 
 - name: Australian
   openml_task_id: 146818
@@ -21,8 +21,8 @@
 - name: steel-plates-fault
   openml_task_id: 168784
 
-- name: dilbert
-  openml_task_id: 168909
+# - name: dilbert
+#   openml_task_id: 168909
 
 - name: fabert
   openml_task_id: 168910
@@ -117,8 +117,8 @@
 - name: Satellite
   openml_task_id: 359975
 
-- name: robert
-  openml_task_id: 359986
+# - name: robert
+#   openml_task_id: 359986
 
 - name: QSAR-TID-11
   openml_task_id: 13854
