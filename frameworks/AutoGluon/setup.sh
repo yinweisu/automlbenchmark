@@ -23,8 +23,10 @@ PIP install ray
 
 if [[ "$VERSION" == "stable" ]]; then
     PIP install --no-cache-dir -U ${PKG}
+    PIP install -u protobuf==3.20.1
 elif [[ "$VERSION" =~ ^[0-9] ]]; then
     PIP install --no-cache-dir -U ${PKG}==${VERSION}
+    PIP install -u protobuf==3.20.1
 else
     # FIXME: HACK
     VERSION="ray_hpo"
@@ -41,6 +43,7 @@ else
     PIP install -e text/
     PIP install -e vision/
     PIP install -e autogluon/
+    PIP install -u protobuf==3.20.1
 fi
 
 PY -c "from autogluon.tabular.version import __version__; print(__version__)" >> "${HERE}/.setup/installed"
