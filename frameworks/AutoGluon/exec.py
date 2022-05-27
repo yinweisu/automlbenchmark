@@ -59,6 +59,10 @@ def run(dataset, config):
             'scheduler': 'local',
             'num_trials': 32,
         }
+        training_params['hyperparameters'] = {
+            'NN_TORCH': {},
+            'FASTAI': {},
+        }
         if is_fork:
             training_params['hyperparameter_tune_kwargs'] = {
                 'searcher': 'random',
